@@ -3,23 +3,49 @@ html {
 }
 
 h1 {
-  text-align: center;
-  margin: 0 !important;
-  color: #d1d1d1;
+  font-size: 4rem;
 }
 
 .title {
-  font-size: 5rem;
+  color: #d1d1d1;
 }
 
-@media (max-width: 768px) {
-  .title {
+.home-img {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.custom-shape-divider-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+}
+.custom-shape-divider-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+}
+@media (max-width: 1200px) {
+  .home-img {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@media (max-width: 900px) {
+  h1 {
     font-size: 3rem;
   }
 }
 
-@media (max-width: 500px) {
-  .title {
-    font-size: 2rem;
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
   }
 }

@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const pages = ["Home", "Adopt a Pet", "Contact"];
+const pages = ["Home", "Find a Pet", "Contact"];
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
