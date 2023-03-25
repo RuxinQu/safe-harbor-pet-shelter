@@ -7,16 +7,13 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Divider from "@mui/material/Divider";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const pages = ["Home", "Adopt a Pet", "Contact"];
-const imgStyle = {
-  width: 100,
-  height: 100,
-};
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -32,7 +29,15 @@ export const AppNavbar = () => {
     <AppBar position="static" style={{ backgroundColor: "#152238" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src="logo.png" alt="logo" style={imgStyle} />
+          <Box
+            sx={{
+              width: { xs: 0, lg: 100 },
+              height: { xs: 0, lg: 100 },
+            }}
+          >
+            <img src="logo.png" alt="logo" style={{ width: "100%" }} />
+          </Box>
+
           <Typography
             variant="h6"
             noWrap
@@ -42,7 +47,6 @@ export const AppNavbar = () => {
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontWeight: 700,
-              letterSpacing: ".3rem",
               fontFamily: "Rowdies",
               color: "inherit",
               textDecoration: "none",
@@ -51,7 +55,12 @@ export const AppNavbar = () => {
             Harbor
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="menu"
@@ -62,6 +71,7 @@ export const AppNavbar = () => {
             >
               <MenuIcon />
             </IconButton>
+            {/* this part of menu is for mobile */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -82,14 +92,13 @@ export const AppNavbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ fontFamily: "Rowdies" }} textAlign="center">
-                    {page}
-                  </Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
+          {/* this part of menu is for desktop */}
           <Typography
             variant="h5"
             noWrap
@@ -108,27 +117,53 @@ export const AppNavbar = () => {
           >
             Harbor
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "flex-end",
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontFamily: "Rowdies",
+                }}
               >
                 {page}
               </Button>
             ))}
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
+              color="white"
+              sx={{ mx: 3 }}
+            />
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <Button sx={{ my: 2, color: "white", display: "block" }}>
+            <Tooltip title="Donate to us">
+              <Button
+                sx={{
+                  my: 2,
+                  color: "white",
+                  fontFamily: "Rowdies",
+                }}
+                startIcon={<FavoriteIcon color="error" />}
+              >
                 DONATE
               </Button>
             </Tooltip>
           </Box>
         </Toolbar>
       </Container>
+      <Divider variant="middle" color="white" />
     </AppBar>
   );
 };
