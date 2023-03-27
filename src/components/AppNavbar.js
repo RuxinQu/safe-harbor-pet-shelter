@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const pages = ["Home", "Adopt a Pet", "Contact"];
+const pages = ["Home", "Find a Pet", "Contact"];
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -25,8 +25,25 @@ export const AppNavbar = () => {
     setAnchorElNav(null);
   };
 
+  // When a user scrolls up, the header will show up. When they scroll down, it disappears.
+  const [scroll, setScroll] = useState(0);
+  const [showHeader, setShowHeader] = useState(false);
+  const changeHeader = () => {
+    let newScroll = window.scrollY;
+    if (newScroll - scroll < 0) {
+      setShowHeader(true);
+    } else {
+      setShowHeader(false);
+    }
+    setScroll(newScroll);
+  };
+  window.addEventListener("scroll", changeHeader);
+
   return (
-    <AppBar position="static" style={{ backgroundColor: "#152238" }}>
+    <AppBar
+      position={showHeader ? "sticky" : "static"}
+      style={{ backgroundColor: "#152238" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box

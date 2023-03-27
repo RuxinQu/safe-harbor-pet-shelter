@@ -1,25 +1,29 @@
 html {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-h1 {
-  text-align: center;
-  margin: 0 !important;
-  color: #d1d1d1;
+.home-img {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.title {
-  font-size: 5rem;
+.custom-shape-divider-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
+.question {
+  display: list-item;
+  list-style-type: "🐾";
+  padding-inline-start: 1ch;
 }
 
-@media (max-width: 500px) {
-  .title {
-    font-size: 2rem;
+@media (max-width: 1200px) {
+  .home-img {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }
