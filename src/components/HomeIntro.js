@@ -83,7 +83,9 @@ export const HomeIntro = () => {
             </Typography>
           </CardContent>
           <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-            <Button size="small">Learn More</Button>
+            <Button size="small" component={ReactRouterLink} to="/about-us">
+              Learn More
+            </Button>
           </CardActions>
         </Card>
 
@@ -130,7 +132,13 @@ export const HomeIntro = () => {
             </Typography>
           </CardContent>
           <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-            <Button size="small" variant="contained" endIcon={<PetsIcon />}>
+            <Button
+              size="small"
+              variant="contained"
+              endIcon={<PetsIcon />}
+              component={ReactRouterLink}
+              to="/adopt-a-pet"
+            >
               Adopt a Pet
             </Button>
           </CardActions>
@@ -143,7 +151,7 @@ export const HomeIntro = () => {
       <Box
         sx={{
           textAlign: "center",
-          width: { xs: "90%", xl: "1200px" },
+          width: { xs: "80%", md: "70%", lg: "1000px" },
           margin: { xs: "5rem 0", lg: "8rem 0" },
         }}
       >
@@ -164,6 +172,8 @@ export const HomeIntro = () => {
         <Button
           variant="contained"
           sx={{ mt: 3 }}
+          component={ReactRouterLink}
+          to="/donate"
           startIcon={<VolunteerActivismIcon />}
         >
           DONATE
@@ -173,7 +183,7 @@ export const HomeIntro = () => {
       <Divider sx={{ borderBottomWidth: 3, width: "90%" }} />
 
       {/* question section */}
-      <Box sx={{ mt: "3rem" }}>
+      <Box sx={{ my: "3rem" }} id="faq">
         <Typography
           sx={{
             fontWeight: 800,
@@ -210,7 +220,6 @@ export const HomeIntro = () => {
             position: "fixed",
             bottom: 0,
             right: "10%",
-            backgroundColor: "#152238",
           }}
           onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });

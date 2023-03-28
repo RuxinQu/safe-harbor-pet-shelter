@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link as ReactRouterLink } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,7 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const pages = ["Home", "Find a Pet", "Contact"];
+const pages = [
+  { title: "Home", path: "/" },
+  { title: "Find a Pet", path: "/adopt-a-pet" },
+  { title: "Contact", path: "/contact" },
+];
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -22,6 +27,7 @@ export const AppNavbar = () => {
   };
 
   const handleCloseNavMenu = () => {
+    // navigate(path);
     setAnchorElNav(null);
   };
 
@@ -40,10 +46,7 @@ export const AppNavbar = () => {
   window.addEventListener("scroll", changeHeader);
 
   return (
-    <AppBar
-      position={showHeader ? "sticky" : "static"}
-      style={{ backgroundColor: "#152238" }}
-    >
+    <AppBar position={showHeader ? "sticky" : "static"} color="theme">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -52,7 +55,12 @@ export const AppNavbar = () => {
               height: { xs: 0, lg: 100 },
             }}
           >
-            <img src="logo.png" alt="logo" style={{ width: "100%" }} />
+            <img
+              src="/logo.png"
+              alt="logo"
+              style={{ width: "100%" }}
+              className="logo"
+            />
           </Box>
 
           <Typography
@@ -108,8 +116,13 @@ export const AppNavbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page}
+                  component={ReactRouterLink}
+                  to={page.path}
+                  onClick={handleCloseNavMenu}
+                >
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -145,22 +158,24 @@ export const AppNavbar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
+                component={ReactRouterLink}
+                to={page.path}
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  color: "white",
+                  color: "#e1e1e1",
                   display: "block",
                   fontFamily: "Rowdies",
                 }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
             <Divider
               orientation="vertical"
               variant="middle"
               flexItem
-              color="white"
+              color="#e1e1e1"
               sx={{ mx: 3 }}
             />
           </Box>
@@ -169,9 +184,11 @@ export const AppNavbar = () => {
               <Button
                 sx={{
                   my: 2,
-                  color: "white",
+                  color: "#e1e1e1",
                   fontFamily: "Rowdies",
                 }}
+                component={ReactRouterLink}
+                to="/donate"
                 startIcon={<FavoriteIcon color="error" />}
               >
                 DONATE
@@ -180,7 +197,7 @@ export const AppNavbar = () => {
           </Box>
         </Toolbar>
       </Container>
-      <Divider variant="middle" color="white" />
+      <Divider variant="middle" color="#e1e1e1" />
     </AppBar>
   );
 };

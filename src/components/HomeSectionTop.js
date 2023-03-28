@@ -35,7 +35,6 @@ export const HomeSectionTop = () => {
       <Box
         sx={{
           display: "flex",
-          // justifyContent: "flex-end",
           position: "relative",
           width: { xs: "100%", lg: "80%" },
         }}
@@ -62,7 +61,6 @@ export const HomeSectionTop = () => {
           alt="background"
           style={{
             width: "100%",
-            backgroundColor: "#152238",
           }}
         />
       </Box>
