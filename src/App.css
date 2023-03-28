@@ -2,6 +2,14 @@ html {
   font-size: 18px;
 }
 
+.logo {
+  transition: transform 1s ease-in-out;
+}
+
+.logo:hover {
+  transform: rotate(90deg);
+}
+
 .home-img {
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
