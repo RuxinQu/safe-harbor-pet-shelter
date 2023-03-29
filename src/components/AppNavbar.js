@@ -117,7 +117,7 @@ export const AppNavbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem
-                  key={page}
+                  key={page.title}
                   component={ReactRouterLink}
                   to={page.path}
                   onClick={handleCloseNavMenu}
@@ -157,7 +157,7 @@ export const AppNavbar = () => {
           >
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
                 component={ReactRouterLink}
                 to={page.path}
                 onClick={handleCloseNavMenu}

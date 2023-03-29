@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppNavbar } from "./components/AppNavbar";
+import { Footer } from "./components/Footer";
 
 import Home from "./pages/Home";
-import { FAQ } from "./components/FAQ";
+import FAQ from "./pages/FAQ";
+import AdoptPet from "./pages/AdoptPet";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -22,8 +24,10 @@ function App() {
         <AppNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/adopt-a-pet" element={<AdoptPet />} />
           <Route path="/question/:questionId" element={<FAQ />} />
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

@@ -11,9 +11,9 @@ import Divider from "@mui/material/Divider";
 import PetsIcon from "@mui/icons-material/Pets";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { qna } from "../util/data";
+import { qna } from "../../util/data";
 
-export const HomeIntro = () => {
+export const Intro = () => {
   const [scroll, setScroll] = useState(false);
   const showArrow = () => {
     if (window.scrollY >= 80) {

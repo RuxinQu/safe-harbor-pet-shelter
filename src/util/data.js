@@ -30,3 +30,68 @@ export const qna = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
 ];
+
+export const imageData = [
+  {
+    img: "/assets/cat-on-door.JPG",
+    title: "cat on door",
+    rows: 2,
+    cols: 2,
+  },
+  {
+    img: "/assets/a-yellow.JPG",
+    title: "yellow dog",
+  },
+  {
+    img: "/assets/guoba.JPG",
+    title: "dog in the snow",
+  },
+  {
+    img: "/assets/flying-cat.JPG",
+    title: "samoyed laying down",
+    cols: 2,
+  },
+  {
+    img: "/assets/blind-cat.JPG",
+    title: "blind cat smiling",
+    cols: 2,
+    rows: 2,
+  },
+  {
+    img: "/assets/zheer-lihua.JPG",
+    title: "cat out of window",
+    cols: 2,
+  },
+  {
+    img: "/assets/yellow-furry.JPG",
+    title: "dog smiling",
+  },
+  {
+    img: "/assets/long-ear.JPG",
+    title: "long ear dog smiling",
+  },
+  {
+    img: "/assets/samoyed.JPG",
+    title: "black dog",
+    rows: 1,
+    cols: 2,
+  },
+  {
+    img: "/assets/golden.JPG",
+    title: "golden retriever smiling",
+  },
+  {
+    img: "/assets/lab.JPG",
+    title: "lab retriever smiling",
+  },
+  {
+    img: "/assets/littlebabe.JPG",
+    title: "little dog laying",
+    cols: 2,
+  },
+  {
+    img: "/assets/big-tail.JPG",
+    title: "cat with a big tail",
+    cols: 2,
+  },
+];

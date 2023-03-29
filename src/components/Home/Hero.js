@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-export const HomeSectionTop = () => {
+export const Hero = () => {
   return (
     <Box
       sx={{
@@ -57,7 +57,7 @@ export const HomeSectionTop = () => {
         </Box>
         <img
           className="home-img"
-          src="bg-home.jpg"
+          src="/bg-home.jpg"
           alt="background"
           style={{
             width: "100%",
