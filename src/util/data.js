@@ -33,8 +33,8 @@ export const qna = [
 
 export const imageData = [
   {
-    img: "/assets/cat-on-door.JPG",
-    title: "cat on door",
+    img: "/assets/yellow-furry.JPG",
+    title: "dog smiling",
     rows: 2,
     cols: 2,
   },
@@ -48,7 +48,7 @@ export const imageData = [
   },
   {
     img: "/assets/flying-cat.JPG",
-    title: "samoyed laying down",
+    title: "cat standing on dog",
     cols: 2,
   },
   {
@@ -59,26 +59,26 @@ export const imageData = [
   },
   {
     img: "/assets/zheer-lihua.JPG",
-    title: "cat out of window",
+    title: "cat waving paws",
     cols: 2,
   },
   {
-    img: "/assets/yellow-furry.JPG",
-    title: "dog smiling",
+    img: "/assets/cat-on-door.JPG",
+    title: "cat laying on door",
   },
   {
-    img: "/assets/long-ear.JPG",
-    title: "long ear dog smiling",
+    img: "/assets/golden.JPG",
+    title: "golden retriever",
   },
   {
     img: "/assets/samoyed.JPG",
-    title: "black dog",
+    title: "samoyed laying down",
     rows: 1,
     cols: 2,
   },
   {
-    img: "/assets/golden.JPG",
-    title: "golden retriever smiling",
+    img: "/assets/corgi-smile.JPG",
+    title: "corgi big big smile",
   },
   {
     img: "/assets/lab.JPG",

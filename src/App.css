@@ -30,7 +30,7 @@ html {
   padding-inline-start: 1ch;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 600px) {
   .home-img {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
