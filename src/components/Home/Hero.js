@@ -20,14 +20,14 @@ export const Hero = () => {
   const matchesSm = useMediaQuery("(min-width:600px)");
   const matchesMd = useMediaQuery("(min-width:900px)");
   return (
-    <Box sx={{ backgroundColor: "#152238", py: { xs: 5, md: 10 } }}>
+    <Box sx={{ backgroundColor: "#152238", py: { xs: "4rem", md: "6rem" } }}>
       <Typography
         color="#e1e1e1"
         sx={{
           fontWeight: 800,
           textAlign: "center",
           fontSize: { xs: "1.5rem", sm: "2rem", lg: "3rem" },
-          pb: { xs: 5, md: 10 },
+          pb: { xs: "4rem", md: "6rem" },
         }}
       >
         Adopt a Furry Friend?

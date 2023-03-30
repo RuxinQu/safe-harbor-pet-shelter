@@ -46,7 +46,8 @@ export const Intro = () => {
         sx={{
           fontWeight: 800,
           textAlign: "center",
-          fontSize: { xs: 27, md: 40 },
+          width: "90%",
+          fontSize: { xs: "1.4rem", md: "1.9rem" },
         }}
       >
         Safe Harbor Pet Shelter (China)
@@ -67,7 +68,7 @@ export const Intro = () => {
             <Typography
               sx={{
                 fontWeight: 800,
-                fontSize: { xs: 25, md: 33 },
+                fontSize: { xs: "1.3rem", md: "1.8rem" },
                 textAlign: "center",
               }}
               gutterBottom
@@ -94,7 +95,7 @@ export const Intro = () => {
             <Typography
               sx={{
                 fontWeight: 800,
-                fontSize: { xs: 25, md: 33 },
+                fontSize: { xs: "1.3rem", md: "1.8rem" },
                 textAlign: "center",
               }}
               gutterBottom
@@ -114,7 +115,7 @@ export const Intro = () => {
             <Typography
               sx={{
                 fontWeight: 800,
-                fontSize: { xs: 25, md: 33 },
+                fontSize: { xs: "1.3rem", md: "1.8rem" },
                 textAlign: "center",
               }}
               gutterBottom
@@ -157,7 +158,7 @@ export const Intro = () => {
       >
         <Typography
           color="#f44336"
-          sx={{ fontWeight: 700, fontSize: { xs: 25, md: 33 } }}
+          sx={{ fontWeight: 700, fontSize: { xs: "1.3rem", md: "1.8rem" } }}
         >
           --- We Need Help ---
         </Typography>

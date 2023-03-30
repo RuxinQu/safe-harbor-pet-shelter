@@ -7,6 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Search } from "../Search";
+import { PetCard } from "./PetCard";
 
 export const PetHero = () => {
   return (
@@ -22,7 +23,9 @@ export const PetHero = () => {
           <FormControlLabel value="dog" control={<Radio />} label="Dog" />
         </RadioGroup>
       </FormControl>
+
       <Search />
+      <PetCard />
     </Box>
   );
 };

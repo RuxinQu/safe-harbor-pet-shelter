@@ -18,6 +18,7 @@ const pages = [
   { title: "Home", path: "/" },
   { title: "Find a Pet", path: "/adopt-a-pet" },
   { title: "Contact", path: "/contact" },
+  { title: "NEWS", path: "/news" },
 ];
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
