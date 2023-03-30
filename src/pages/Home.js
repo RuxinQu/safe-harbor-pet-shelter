@@ -1,14 +1,15 @@
-import React from "react";
-import { HomeSectionTop } from "../components/HomeSectionTop";
-import { HomeIntro } from "../components/HomeIntro";
-import { Footer } from "../components/Footer";
+import React, { useEffect } from "react";
+import { Hero } from "../components/Home/Hero";
+import { Intro } from "../components/Home/Intro";
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
-      <HomeSectionTop />
-      <HomeIntro />
-      <Footer />
+      <Hero />
+      <Intro />
     </>
   );
 }

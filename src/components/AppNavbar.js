@@ -18,6 +18,7 @@ const pages = [
   { title: "Home", path: "/" },
   { title: "Find a Pet", path: "/adopt-a-pet" },
   { title: "Contact", path: "/contact" },
+  { title: "NEWS", path: "/news" },
 ];
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -117,7 +118,7 @@ export const AppNavbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem
-                  key={page}
+                  key={page.title}
                   component={ReactRouterLink}
                   to={page.path}
                   onClick={handleCloseNavMenu}
@@ -157,7 +158,7 @@ export const AppNavbar = () => {
           >
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
                 component={ReactRouterLink}
                 to={page.path}
                 onClick={handleCloseNavMenu}

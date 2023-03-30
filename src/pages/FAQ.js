@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { qna } from "../util/data";
 
@@ -9,7 +9,11 @@ import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 const navigation = ["previous", "next"];
 
-export const FAQ = () => {
+export default function FAQ() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { questionId } = useParams();
   const navigate = useNavigate();
   const id = parseInt(questionId);
@@ -17,14 +21,15 @@ export const FAQ = () => {
     <Box
       sx={{
         width: "90%",
-        margin: "0 auto",
+        minHeight: "80vh",
+        margin: "auto",
+        mt: 5,
       }}
     >
       <Tooltip title="Back to FAQ" placement="bottom">
         <Fab
           aria-label="back"
           size="medium"
-          sx={{ mt: 5 }}
           onClick={() => {
             navigate("/");
             setTimeout(
@@ -86,4 +91,4 @@ export const FAQ = () => {
       )}
     </Box>
   );
-};
+}
