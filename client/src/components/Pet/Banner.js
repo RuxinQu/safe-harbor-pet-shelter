@@ -7,12 +7,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Search } from "../Search";
-import { PetCard } from "./PetCard";
 
-export const PetHero = () => {
+export const Banner = () => {
   return (
     <Box>
-      <Typography>Adopt a Pet</Typography>
+      <Typography>Pets available for adoption</Typography>
       <FormControl>
         <RadioGroup
           row
@@ -25,7 +24,6 @@ export const PetHero = () => {
       </FormControl>
 
       <Search />
-      <PetCard />
     </Box>
   );
 };
