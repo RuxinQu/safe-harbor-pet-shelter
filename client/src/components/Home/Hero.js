@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -32,8 +31,6 @@ export const Hero = () => {
       >
         Adopt a Furry Friend?
       </Typography>
-
-      {/* banner wrapper */}
 
       {/* top curve banner */}
       <ImageList

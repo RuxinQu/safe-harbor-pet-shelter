@@ -5,25 +5,38 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { Search } from "../Search";
 
-export const Banner = () => {
+const types = ["all", "cat", "dog"];
+
+export const Banner = ({ type, handleChangeType }) => {
   return (
-    <Box>
-      <Typography>Pets available for adoption</Typography>
+    <Box textAlign={"center"} sx={{ py: { xs: "2rem", md: "4rem" } }}>
+      <Typography
+        sx={{
+          fontWeight: 800,
+          fontSize: { xs: "1.2rem", md: "1.5rem", lg: "1.8rem" },
+        }}
+      >
+        Pets available for adoption
+      </Typography>
       <FormControl>
         <RadioGroup
           row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
+          aria-labelledby="animal-options"
+          name="animals"
+          value={type}
+          onChange={handleChangeType}
         >
-          <FormControlLabel value="cat" control={<Radio />} label="Cat" />
-          <FormControlLabel value="dog" control={<Radio />} label="Dog" />
+          {types.map((t) => (
+            <FormControlLabel
+              key={t}
+              value={t}
+              control={<Radio />}
+              label={t[0].toUpperCase() + t.slice(1)}
+            />
+          ))}
         </RadioGroup>
       </FormControl>
-
-      <Search />
     </Box>
   );
 };

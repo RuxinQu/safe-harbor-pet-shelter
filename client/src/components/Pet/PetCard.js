@@ -8,8 +8,8 @@ import Typography from "@mui/material/Typography";
 
 export const PetCard = ({ title, img }) => {
   return (
-    <Card sx={{ width: 300 }}>
-      <CardMedia sx={{ height: 300 }} image={img} title={title} />
+    <Card>
+      <CardMedia sx={{ height: 320 }} image={img} title={title} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {title}
@@ -21,6 +21,7 @@ export const PetCard = ({ title, img }) => {
       </CardContent>
       <CardActions>
         <Button size="small">Adopt</Button>
+        <Button size="small">Detail</Button>
       </CardActions>
     </Card>
   );

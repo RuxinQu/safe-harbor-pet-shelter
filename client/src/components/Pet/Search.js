@@ -22,7 +22,11 @@ export const Search = () => {
   };
 
   return (
-    <Box component="form" onSubmit={onSearchHandler} className="search-form">
+    <Box
+      sx={{ position: "absolute", right: 0, top: "20px" }}
+      component="form"
+      onSubmit={onSearchHandler}
+    >
       <input type="text" className="search" ref={searchInputRef} />
       <button type="submit" className="search-button">
         🔎
