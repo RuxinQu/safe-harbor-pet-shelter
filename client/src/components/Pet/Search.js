@@ -1,36 +1,45 @@
-import React, { useRef } from "react";
-import Box from "@mui/material/Box";
-import Input from "@mui/material/Input";
-// import useHistory here.
+import React from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Container from "@mui/material/Container";
 
 export const Search = () => {
-  // get the history object here
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const searchInputRef = useRef();
-
-  const onSearchHandler = (e) => {
-    e.preventDefault();
-
+  const onSearchHandler = (data) => {
     const searchQuery = new URLSearchParams({
-      name: searchInputRef.current.value,
+      name: data.name,
     }).toString();
-
-    // imperatively redirect with history.push()
     navigate("/search?" + searchQuery);
   };
 
   return (
-    <Box
-      sx={{ position: "absolute", right: 0, top: "20px" }}
-      component="form"
-      onSubmit={onSearchHandler}
-    >
-      <input type="text" className="search" ref={searchInputRef} />
-      <button type="submit" className="search-button">
-        🔎
-      </button>
-    </Box>
+    <Container maxWidth="xl">
+      <form
+        onSubmit={handleSubmit(onSearchHandler)}
+        style={{ textAlign: "right", padding: "1rem 0 2rem 0" }}
+      >
+        <input
+          {...register("name", { required: true })}
+          placeholder="Search a pet by name"
+          style={{
+            width: "150px",
+            borderRadius: "20px",
+            padding: "5px",
+          }}
+        />
+        <button
+          type="submit"
+          style={{ backgroundColor: "transparent", border: "none" }}
+        >
+          🔎
+        </button>
+      </form>
+    </Container>
   );
 };
