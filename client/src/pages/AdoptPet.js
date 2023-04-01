@@ -1,30 +1,50 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { BannerContainer } from "../containers/Pet/BannerContainer";
+import { Banner } from "../components/Pet/Banner";
+
 import { PetCard } from "../components/Pet/PetCard";
-import { imageData } from "../util/data";
+import { getPets } from "../util/api";
 
 export default function AdoptPet() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const [type, setType] = useState("all");
+  const handleChangeType = (event) => {
+    setType(event.target.value);
+  };
+
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleSearch = async (type) => {
+      const pets = await getPets(type);
+      setPets([...pets]);
+      setLoading(false);
+    };
+
+    handleSearch(type);
+  }, [type]);
+
   return (
     <>
-      <BannerContainer />
+      <Banner handleChangeType={handleChangeType} type={type} />
       <Grid container width={{ xs: "95%", md: "80%", xl: 1200 }} mx={"auto"}>
-        {imageData.map((i) => (
-          <Grid
-            key={i.img}
-            item
-            xs={12}
-            sm={6}
-            lg={3}
-            sx={{ p: { xs: "2px", md: "5px" } }}
-          >
-            <PetCard title={i.title} img={i.img} />
-          </Grid>
-        ))}
+        {!loading &&
+          pets.map((i) => (
+            <Grid
+              key={i._id}
+              item
+              xs={12}
+              sm={6}
+              lg={3}
+              sx={{ p: { xs: "2px", md: "5px" } }}
+            >
+              <PetCard title={i.name} img={i.images[0].url} />
+            </Grid>
+          ))}
       </Grid>
     </>
   );

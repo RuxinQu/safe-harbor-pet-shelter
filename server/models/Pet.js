@@ -17,6 +17,9 @@ const petSchema = new Schema({
   age: {
     type: Number,
   },
+  description: {
+    type: String,
+  },
   images: [imageSchema],
 });
 
