@@ -3,6 +3,7 @@ import { AppNavbar } from "./components/AppNavbar";
 import { Footer } from "./components/Footer";
 
 import Home from "./pages/Home";
+import SearchPage from "./pages/SearchPage";
 import FAQ from "./pages/FAQ";
 import AdoptPet from "./pages/AdoptPet";
 import "./App.css";
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/adopt-a-pet" element={<AdoptPet />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/question/:questionId" element={<FAQ />} />
         </Routes>
         <Footer />
