@@ -1,38 +1,19 @@
 const express = require("express");
 const app = express();
-const path = require("path");
-const cors = require("cors");
-var expressStaticGzip = require("express-static-gzip");
+const db = require("./db/connection");
+const mongoose = require("mongoose");
+const router = require("./routes/pet");
 
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4001;
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
 
-app.use(
-  expressStaticGzip(path.join(__dirname, "../client/build"), {
-    enableBrotli: true,
-    customCompressions: [
-      {
-        encodingName: "deflate",
-        fileExtension: "zz",
-      },
-    ],
-    orderPreference: ["br"],
-  })
-);
+mongoose.set("debug", true);
+app.use(router);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-}
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
-// app.use(router);
-
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`server is listening to port ${PORT}!`);
+  });
 });
