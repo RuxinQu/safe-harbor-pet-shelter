@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 app.use(router);
 
 db.once("open", () => {

@@ -10,7 +10,7 @@ const types = ["all", "cat", "dog"];
 
 export const Banner = ({ type, handleChangeType }) => {
   return (
-    <Box textAlign={"center"} sx={{ py: { xs: "2rem", md: "4rem" } }}>
+    <Box textAlign={"center"} sx={{ pb: { xs: "2rem", md: "4rem" } }}>
       <Typography
         sx={{
           fontWeight: 800,

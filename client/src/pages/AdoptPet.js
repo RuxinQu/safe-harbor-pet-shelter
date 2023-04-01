@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import { Banner } from "../components/Pet/Banner";
-
+import { Search } from "../components/Pet/Search";
 import { PetCard } from "../components/Pet/PetCard";
 import { getPets } from "../util/api";
 
@@ -24,12 +25,12 @@ export default function AdoptPet() {
       setPets([...pets]);
       setLoading(false);
     };
-
     handleSearch(type);
   }, [type]);
 
   return (
-    <>
+    <Box sx={{ backgroundColor: "#e0e0e0" }}>
+      <Search />
       <Banner handleChangeType={handleChangeType} type={type} />
       <Grid container width={{ xs: "95%", md: "80%", xl: 1200 }} mx={"auto"}>
         {!loading &&
@@ -46,6 +47,6 @@ export default function AdoptPet() {
             </Grid>
           ))}
       </Grid>
-    </>
+    </Box>
   );
 }
