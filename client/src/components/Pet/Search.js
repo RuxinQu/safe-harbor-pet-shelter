@@ -5,11 +5,7 @@ import Container from "@mui/material/Container";
 
 export const Search = () => {
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSearchHandler = (data) => {
     const searchQuery = new URLSearchParams({
