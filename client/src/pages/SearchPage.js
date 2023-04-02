@@ -49,7 +49,13 @@ export default function SearchPage() {
               lg={3}
               sx={{ p: { xs: "2px", md: "5px" } }}
             >
-              <PetCard title={i.name} img={i.images[0].url} />
+              <PetCard
+                name={i.name}
+                img={i.images[0].url}
+                gender={i.gender}
+                breed={i.breed}
+                id={i._id}
+              />
             </Grid>
           ))}
       </Grid>
