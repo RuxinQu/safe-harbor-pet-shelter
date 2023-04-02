@@ -138,7 +138,7 @@ export const Intro = () => {
               variant="contained"
               endIcon={<PetsIcon />}
               component={ReactRouterLink}
-              to="/adopt-a-pet"
+              to="/pet"
             >
               Adopt a Pet
             </Button>

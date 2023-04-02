@@ -19,7 +19,7 @@ const quickLinks = [
 ];
 
 const categories = [
-  { title: "adopt a pet", path: "/adopt-a-pet" },
+  { title: "adopt a pet", path: "/pet" },
   { title: "donate", path: "/donate" },
 ];
 

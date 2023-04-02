@@ -3,9 +3,12 @@ import { AppNavbar } from "./components/AppNavbar";
 import { Footer } from "./components/Footer";
 
 import Home from "./pages/Home";
+import Pet from "./pages/Pet";
 import SearchPage from "./pages/SearchPage";
+import PetDetail from "./pages/PetDetail";
+import Adopt from "./pages/Adopt";
+import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
-import AdoptPet from "./pages/AdoptPet";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -25,9 +28,12 @@ function App() {
         <AppNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/adopt-a-pet" element={<AdoptPet />} />
+          <Route path="/pet" element={<Pet />} />
+          <Route path="/pet/detail/:id" element={<PetDetail />} />
+          <Route path="/pet/adopt/:id" element={<Adopt />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/question/:questionId" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>

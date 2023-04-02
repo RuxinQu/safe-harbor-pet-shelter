@@ -6,7 +6,7 @@ import { Search } from "../components/Pet/Search";
 import { PetCard } from "../components/Pet/PetCard";
 import { getPets } from "../util/api";
 
-export default function AdoptPet() {
+export default function Pet() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -43,7 +43,13 @@ export default function AdoptPet() {
               lg={3}
               sx={{ p: { xs: "2px", md: "5px" } }}
             >
-              <PetCard title={i.name} img={i.images[0].url} />
+              <PetCard
+                name={i.name}
+                img={i.images[0].url}
+                gender={i.gender}
+                breed={i.breed}
+                id={i._id}
+              />
             </Grid>
           ))}
       </Grid>

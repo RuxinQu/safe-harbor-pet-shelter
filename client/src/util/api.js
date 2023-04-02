@@ -20,3 +20,9 @@ export const getPetsByName = async (name) => {
   const jsonResult = await result.json();
   return jsonResult.filter((p) => p.name.includes(name));
 };
+
+export const getPetsById = async (id) => {
+  const result = await fetch("/pets", options);
+  const jsonResult = await result.json();
+  return jsonResult.find((p) => p._id === id);
+};

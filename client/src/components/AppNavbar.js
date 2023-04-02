@@ -16,7 +16,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const pages = [
   { title: "Home", path: "/" },
-  { title: "Find a Pet", path: "/adopt-a-pet" },
+  { title: "Find a Pet", path: "/pet" },
   { title: "Contact", path: "/contact" },
   { title: "NEWS", path: "/news" },
 ];

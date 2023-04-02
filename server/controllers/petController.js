@@ -1,4 +1,5 @@
 const { Pet } = require("../models");
+
 const PetController = {
   async getAllPets(req, res) {
     try {
