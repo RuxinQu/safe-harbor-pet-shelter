@@ -104,45 +104,53 @@ export const AdoptForm = ({ pet }) => {
           />
         </div>
 
-        <label htmlFor="city">City:</label>
-        <input
-          type="text"
-          id="city"
-          name="city"
-          autoComplete="address-level2"
-          value={formData.city}
-          onChange={handleInputChange}
-        />
+        <div>
+          <label htmlFor="city">City:</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            autoComplete="address-level2"
+            value={formData.city}
+            onChange={handleInputChange}
+          />
+        </div>
 
-        <label htmlFor="state">State/Province:</label>
-        <input
-          type="text"
-          id="state"
-          name="state"
-          autoComplete="address-level1"
-          value={formData.state}
-          onChange={handleInputChange}
-        />
+        <div>
+          <label htmlFor="state">State/Province:</label>
+          <input
+            type="text"
+            id="state"
+            name="state"
+            autoComplete="address-level1"
+            value={formData.state}
+            onChange={handleInputChange}
+          />
+        </div>
 
-        <label htmlFor="zip">ZIP/Postal Code:</label>
-        <input
-          type="text"
-          id="zip"
-          name="zip"
-          autoComplete="postal-code"
-          value={formData.zip}
-          onChange={handleInputChange}
-        />
+        <div>
+          <label htmlFor="zip">ZIP/Postal Code:</label>
+          <input
+            type="text"
+            id="zip"
+            name="zip"
+            autoComplete="postal-code"
+            value={formData.zip}
+            onChange={handleInputChange}
+          />
+        </div>
 
-        <label htmlFor="country">Country:</label>
-        <input
-          type="text"
-          id="country"
-          name="country"
-          autoComplete="country"
-          value={formData.country}
-          onChange={handleInputChange}
-        />
+        <div>
+          <label htmlFor="country">Country:</label>
+          <input
+            type="text"
+            id="country"
+            name="country"
+            autoComplete="country"
+            value={formData.country}
+            onChange={handleInputChange}
+          />
+        </div>
 
         <div>
           <label htmlFor="occupation">Occupation:</label>

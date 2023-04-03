@@ -1,34 +1,14 @@
-const { S3Client } = require("@aws-sdk/client-s3");
 const router = require("express").Router();
-const multer = require("multer");
-const multerS3 = require("multer-s3");
-const { v4: uuidv4 } = require("uuid");
+const upload = require("../util/imageHelper");
+const {
+  generateHtml,
+  mailOptions,
+  transporter,
+} = require("../util/emailHelper");
 const { Pet } = require("../models");
-require("dotenv").config();
-
-const s3 = new S3Client({
-  region: process.env.AWS_REGION,
-});
-
-// images is the key!
-const upload = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: process.env.AWS_S3_BUCKET_NAME,
-    acl: "public-read",
-    contentType: multerS3.AUTO_CONTENT_TYPE,
-    metadata: function (req, file, cb) {
-      cb(null, { fieldName: file.fieldname });
-    },
-    key: function (req, file, cb) {
-      cb(null, Date.now().toString() + uuidv4() + "-" + file.originalname);
-    },
-  }),
-});
 
 router.post("/upload-images", upload.array("images", 10), async (req, res) => {
   try {
-    const { name, type, gender, breed, age, description } = req.body;
     const files = req.files;
     // Create an array of the uploaded file URLs
     const images = files.map((file) => {
@@ -46,9 +26,20 @@ router.post("/upload-images", upload.array("images", 10), async (req, res) => {
   }
 });
 
-router.post("/adopt", async (req, res) => {
-  console.log(req.body);
-  res.status(200).send();
+router.post("/adopt", (req, res) => {
+  const html = generateHtml(req);
+  transporter.sendMail(
+    { ...mailOptions, html, text: JSON.stringify(req.body) },
+    function (err, data) {
+      if (err) {
+        console.log("Error " + err);
+        res.status(500).json();
+      } else {
+        console.log("Email sent successfully");
+        res.status(200).json();
+      }
+    }
+  );
 });
 
 module.exports = router;
