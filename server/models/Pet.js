@@ -18,6 +18,12 @@ const petSchema = new Schema({
     type: String,
     required: true,
   },
+  size: {
+    type: String,
+  },
+  activityLevel: {
+    type: String,
+  },
   age: {
     type: Number,
   },

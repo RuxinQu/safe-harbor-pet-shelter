@@ -18,7 +18,7 @@ export const Search = () => {
     <Container maxWidth="xl">
       <form
         onSubmit={handleSubmit(onSearchHandler)}
-        style={{ textAlign: "right", padding: "1rem 0 2rem 0" }}
+        style={{ textAlign: "right", padding: "1rem 0 " }}
       >
         <input
           {...register("name", { required: true })}

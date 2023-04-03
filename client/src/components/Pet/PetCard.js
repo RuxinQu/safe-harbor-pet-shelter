@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 export const PetCard = ({ name, img, gender, breed, id }) => {
   const navigate = useNavigate();
   return (
-    <Card sx={{ my: { xs: 0, md: "1rem", lg: "2rem" } }}>
+    <Card sx={{ mb: { xs: 0, md: "1rem", lg: "2rem" } }}>
       <CardMedia sx={{ height: 320 }} image={img} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
