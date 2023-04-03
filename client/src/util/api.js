@@ -29,7 +29,7 @@ export const getPetsById = async (id) => {
 
 export const sendAdoptForm = async (data) => {
   try {
-    const response = await fetch("/admin/adopt", {
+    const response = await fetch("/pets/adopt", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

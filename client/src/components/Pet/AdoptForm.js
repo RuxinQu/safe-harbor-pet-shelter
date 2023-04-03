@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { sendAdoptForm } from "../../util/api";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AdoptForm = ({ pet }) => {
   const [formData, setFormData] = useState({
