@@ -1,20 +1,18 @@
 const express = require("express");
-const app = express();
 const session = require("express-session");
+const passport = require("passport");
+require("./util/passport");
+
 const db = require("./db/connection");
 const mongoose = require("mongoose");
 const router = require("./controllers");
 const { transporter } = require("./util/emailHelper");
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 require("dotenv").config();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
-
-// mongoose.set("debug", true);
 app.use(
   session({
     secret: process.env.SESSION_SECRET_KEY,
@@ -29,6 +27,14 @@ app.use(
   })
 );
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
+// mongoose.set("debug", true);
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(router);
 
 db.once("open", () => {

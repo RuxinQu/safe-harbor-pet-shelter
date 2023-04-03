@@ -1,8 +1,15 @@
 const router = require("express").Router();
 const upload = require("../util/imageHelper");
-
-const { admin, isLoggedIn } = require("../util/auth");
+const passport = require("passport");
+const rateLimit = require("express-rate-limit");
+const isLoggedIn = require("../util/auth");
 const { Pet } = require("../models");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 requests per windowMs
+  message: "Too many requests, please try again later",
+});
 
 router.post(
   "/upload-images",
@@ -28,13 +35,13 @@ router.post(
   }
 );
 
-router.post("/", admin, async (req, res) => {
-  res.status(200).json({ message: "Login success" });
+router.post("/", limiter, passport.authenticate("local"), (req, res) => {
+  res.json(req.user);
 });
 
 router.get("/logout", async (req, res) => {
   req.session.destroy();
-  res.status(200).json({ message: "Logout success" });
+  res.json({ message: "Logout success" });
 });
 
 module.exports = router;

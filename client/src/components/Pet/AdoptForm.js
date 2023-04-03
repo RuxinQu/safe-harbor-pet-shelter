@@ -1,30 +1,13 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { sendAdoptForm } from "../../util/api";
+import { formHelper } from "../../util/formHelper";
 import "react-toastify/dist/ReactToastify.css";
 
 export const AdoptForm = ({ pet }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    city: "",
-    state: "",
-    zip: "",
-    country: "",
-    occupation: "",
-    household: "",
-    yard: "",
-    pets: "",
-    reason: "",
-    id: pet._id,
-    dogName: pet.name,
-    breed: pet.breed,
-    age: pet.age,
-    size: pet.size,
-    gender: pet.gender,
-    activityLevel: pet.activityLevel,
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formState = formHelper(pet);
+  const [formData, setFormData] = useState(formState);
   const handleInputChange = (event) => {
     const target = event.target;
     const value = target.value;
@@ -34,6 +17,7 @@ export const AdoptForm = ({ pet }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     // Handle form submission here
     const response = await sendAdoptForm(formData);
     if (response.ok) {
@@ -42,23 +26,23 @@ export const AdoptForm = ({ pet }) => {
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "colored",
       });
+      setFormData(formState);
     } else {
       toast.error("Fail to submit the form!", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "colored",
       });
     }
+    setIsSubmitting(false);
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -269,7 +253,11 @@ export const AdoptForm = ({ pet }) => {
         </div>
       </fieldset>
       <div>
-        <button type="submit" style={{ padding: "5px", marginTop: "10px" }}>
+        <button
+          type="submit"
+          style={{ padding: "5px", marginTop: "10px" }}
+          disabled={isSubmitting}
+        >
           Submit
         </button>
       </div>
