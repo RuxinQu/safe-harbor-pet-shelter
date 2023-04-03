@@ -1,14 +1,13 @@
+const router = require("express").Router();
 const { Pet } = require("../models");
 
-const PetController = {
-  async getAllPets(req, res) {
-    try {
-      const allPets = await Pet.find();
-      res.status(200).json(allPets);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
-};
+router.get("/", async (req, res) => {
+  try {
+    const allPets = await Pet.find();
+    res.status(200).json(allPets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-module.exports = PetController;
+module.exports = router;
