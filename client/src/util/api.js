@@ -26,3 +26,18 @@ export const getPetsById = async (id) => {
   const jsonResult = await result.json();
   return jsonResult.find((p) => p._id === id);
 };
+
+export const sendAdoptForm = async (data) => {
+  try {
+    const response = await fetch("/admin/adopt", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};

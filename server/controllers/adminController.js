@@ -46,4 +46,9 @@ router.post("/upload-images", upload.array("images", 10), async (req, res) => {
   }
 });
 
+router.post("/adopt", async (req, res) => {
+  console.log(req.body);
+  res.status(200).send();
+});
+
 module.exports = router;
