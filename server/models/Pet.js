@@ -21,7 +21,7 @@ const petSchema = new Schema({
   size: {
     type: String,
   },
-  activityLevel: {
+  activity: {
     type: String,
   },
   age: {

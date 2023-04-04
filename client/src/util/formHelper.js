@@ -1,4 +1,4 @@
-export const formHelper = (pet) => {
+export const applicationHelper = (pet) => {
   return {
     name: "",
     email: "",
@@ -18,6 +18,16 @@ export const formHelper = (pet) => {
     age: pet.age,
     size: pet.size,
     gender: pet.gender,
-    activityLevel: pet.activityLevel,
+    activity: pet.activity,
   };
 };
+
+export const petUploadHelper = [
+  "name",
+  "type",
+  "breed",
+  "age",
+  "size",
+  "gender",
+  "activity",
+];

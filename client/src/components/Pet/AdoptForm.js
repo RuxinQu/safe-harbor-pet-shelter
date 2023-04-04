@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { sendAdoptForm } from "../../util/api";
-import { formHelper } from "../../util/formHelper";
+import { applicationHelper } from "../../util/formHelper";
 import "react-toastify/dist/ReactToastify.css";
 
 export const AdoptForm = ({ pet }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formState = formHelper(pet);
+  const formState = applicationHelper(pet);
   const [formData, setFormData] = useState(formState);
   const handleInputChange = (event) => {
     const target = event.target;
@@ -243,13 +243,8 @@ export const AdoptForm = ({ pet }) => {
         </div>
 
         <div>
-          <label htmlFor="activity-level">Activity Level:</label>
-          <input
-            id="activity-level"
-            name="activity-level"
-            value={pet.activityLevel}
-            readOnly
-          />
+          <label htmlFor="activity">Activity Level:</label>
+          <input id="activity" name="activity" value={pet.activity} readOnly />
         </div>
       </fieldset>
       <div>

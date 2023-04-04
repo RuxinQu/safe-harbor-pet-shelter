@@ -112,7 +112,7 @@ const generateHtml = (req) => {
             </div>
             <div>
                 <span>Activity Level:</span>
-                <span>${req.body.ActivityLevel}</span>
+                <span>${req.body.activity}</span>
             </div>
         </fieldset>
     </form>

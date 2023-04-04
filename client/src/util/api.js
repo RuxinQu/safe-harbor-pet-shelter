@@ -56,3 +56,16 @@ export const adminLogin = async (data) => {
     return err.message;
   }
 };
+
+export const addPets = async (data) => {
+  try {
+    const response = await fetch("/admin/add-pets", {
+      mode: "cors",
+      method: "POST",
+      body: data,
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};

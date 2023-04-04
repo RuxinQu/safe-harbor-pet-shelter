@@ -12,8 +12,8 @@ const limiter = rateLimit({
 });
 
 router.post(
-  "/upload-images",
-  isLoggedIn,
+  "/add-pets",
+  // isLoggedIn,
   upload.array("images", 10),
   async (req, res) => {
     try {

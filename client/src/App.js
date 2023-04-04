@@ -10,6 +10,7 @@ import Contact from "./pages/Shelter/Contact";
 import FAQ from "./pages/Shelter/FAQ";
 
 import Login from "./pages/Admin/Login";
+import Admin from "./pages/Admin/Admin";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./App.css";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/question/:questionId" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/" element={<Admin />} />
         </Routes>
         <Footer />
       </Router>
