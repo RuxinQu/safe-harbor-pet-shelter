@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link as ReactRouterLink } from "react-router-dom";
-import { getPetsById } from "../util/api";
-import { AdoptForm } from "../components/Pet/AdoptForm";
+import { getPetsById } from "../../util/api";
+import { AdoptForm } from "../../components/Pet/AdoptForm";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 

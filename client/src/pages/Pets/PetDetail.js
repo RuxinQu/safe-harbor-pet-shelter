@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getPetsById } from "../util/api";
-import { Detail } from "../components/Pet/Detail";
+import { getPetsById } from "../../util/api";
+import { Detail } from "../../components/Pet/Detail";
 
 export default function PetDetail() {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import { getPetsByName } from "../util/api";
-import { PetCard } from "../components/Pet/PetCard";
+import { getPetsByName } from "../../util/api";
+import { PetCard } from "../../components/Pet/PetCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";

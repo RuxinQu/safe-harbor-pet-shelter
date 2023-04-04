@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { qna } from "../util/data";
+import { qna } from "../../util/data";
 
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";

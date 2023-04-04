@@ -1,14 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppNavbar } from "./components/AppNavbar";
 import { Footer } from "./components/Footer";
-
-import Home from "./pages/Home";
-import Pet from "./pages/Pet";
-import SearchPage from "./pages/SearchPage";
-import PetDetail from "./pages/PetDetail";
-import Adopt from "./pages/Adopt";
-import Contact from "./pages/Contact";
-import FAQ from "./pages/FAQ";
+import Home from "./pages/Shelter/Home";
+import Pet from "./pages/Pets/Pet";
+import SearchPage from "./pages/Pets/SearchPage";
+import PetDetail from "./pages/Pets/PetDetail";
+import Adopt from "./pages/Pets/Adopt";
+import Contact from "./pages/Shelter/Contact";
+import FAQ from "./pages/Shelter/FAQ";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
