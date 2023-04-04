@@ -41,3 +41,18 @@ export const sendAdoptForm = async (data) => {
     return err.message;
   }
 };
+
+export const adminLogin = async (data) => {
+  try {
+    const response = await fetch("/admin/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};

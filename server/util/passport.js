@@ -3,13 +3,14 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const correctPW = process.env.ADMIN_PASSWORD_HASH;
+const correctUser = process.env.ADMIN_USERNAME;
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      if (username !== "admin") {
+      if (username !== correctUser) {
         return done(null, false, {
-          message: "can not find username",
+          message: "Wrong username",
         });
       }
       const matchPassword = await bcrypt.compare(password, correctPW);

@@ -7,7 +7,7 @@ const { Pet } = require("../models");
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // 5 requests per windowMs
+  max: 3, // 3 requests per windows
   message: "Too many requests, please try again later",
 });
 
@@ -35,7 +35,7 @@ router.post(
   }
 );
 
-router.post("/", limiter, passport.authenticate("local"), (req, res) => {
+router.post("/login", limiter, passport.authenticate("local"), (req, res) => {
   res.json(req.user);
 });
 
@@ -44,4 +44,8 @@ router.get("/logout", async (req, res) => {
   res.json({ message: "Logout success" });
 });
 
+router.get("/user", (req, res) => {
+  const user = req.session.user;
+  res.json(user);
+});
 module.exports = router;

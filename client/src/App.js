@@ -8,8 +8,11 @@ import PetDetail from "./pages/Pets/PetDetail";
 import Adopt from "./pages/Pets/Adopt";
 import Contact from "./pages/Shelter/Contact";
 import FAQ from "./pages/Shelter/FAQ";
-import "./App.css";
+
+import Login from "./pages/Admin/Login";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./App.css";
 
 const theme = createTheme({
   palette: {
@@ -33,6 +36,7 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/question/:questionId" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/login" element={<Login />} />
         </Routes>
         <Footer />
       </Router>
