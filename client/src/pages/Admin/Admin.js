@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { WithAuth, adminLogout } from "../../util/api";
-import { AddPets } from "../../components/Admin/AddPets";
-import { EditPets } from "../../components/Admin/EditPets";
+import { WithAuth, adminLogout, getPets } from "../../util/api";
+import { PetForm } from "../../components/Admin/PetForm";
+import { petUploadHelper } from "../../util/formHelper";
 
 export default function Admin() {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [pets, setPets] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   useEffect(() => {
     const Auth = async () => {
       const result = await WithAuth();
@@ -19,6 +20,18 @@ export default function Admin() {
     };
     Auth();
   });
+  useEffect(() => {
+    const getAllPets = async () => {
+      const pets = await getPets("all");
+      setPets([...pets]);
+    };
+    getAllPets();
+  }, [pets]);
+  // turn the array to an obj with initial value empty String
+  const addInitFormState = petUploadHelper.reduce(
+    (acc, curr) => ({ ...acc, [curr]: "" }),
+    {}
+  );
 
   return (
     isLoggedIn && (
@@ -33,8 +46,24 @@ export default function Admin() {
         <button onClick={adminLogout} style={{ margin: "1rem" }}>
           Logout
         </button>
-        <AddPets />
-        <EditPets />
+
+        <PetForm
+          initFormState={addInitFormState}
+          initImgState={[]}
+          title={"Add Pets"}
+        />
+        {pets.map((p) => {
+          // const { images, ...p } = p;
+          const { images, ...editInitFormState } = p;
+          return (
+            <PetForm
+              key={p.description}
+              initFormState={editInitFormState}
+              initImgState={images}
+              title={"Edit Pets"}
+            />
+          );
+        })}
       </div>
     )
   );

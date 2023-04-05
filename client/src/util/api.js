@@ -80,6 +80,20 @@ export const addPets = async (data) => {
   }
 };
 
+export const deletePet = async (id) => {
+  try {
+    const response = await fetch(`/admin/delete-pet/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
 export const WithAuth = async () => {
   try {
     const response = await fetch("/admin/auth", options);

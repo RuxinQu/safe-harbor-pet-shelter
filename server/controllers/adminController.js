@@ -35,6 +35,20 @@ router.post(
   }
 );
 
+router.delete(
+  "/delete-pet/:id",
+  // isLoggedIn,
+
+  async (req, res) => {
+    try {
+      await Pet.findByIdAndDelete(req.params.id);
+      res.status(200).json({ message: "Pet deleted" });
+    } catch (err) {
+      res.status(404).json();
+    }
+  }
+);
+
 router.post("/login", limiter, passport.authenticate("local"), (req, res) => {
   res.json(req.user);
 });
