@@ -57,6 +57,16 @@ export const adminLogin = async (data) => {
   }
 };
 
+export const adminLogout = async () => {
+  try {
+    const response = await fetch("/admin/logout", options);
+    window.location.assign("/admin/login");
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
 export const addPets = async (data) => {
   try {
     const response = await fetch("/admin/add-pets", {
@@ -64,6 +74,15 @@ export const addPets = async (data) => {
       method: "POST",
       body: data,
     });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
+export const WithAuth = async () => {
+  try {
+    const response = await fetch("/admin/auth", options);
     return response;
   } catch (err) {
     return err.message;

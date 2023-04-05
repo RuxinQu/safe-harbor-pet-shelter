@@ -13,7 +13,7 @@ const limiter = rateLimit({
 
 router.post(
   "/add-pets",
-  // isLoggedIn,
+  isLoggedIn,
   upload.array("images", 10),
   async (req, res) => {
     try {
@@ -36,16 +36,26 @@ router.post(
 );
 
 router.post("/login", limiter, passport.authenticate("local"), (req, res) => {
+  console.log(req.user);
   res.json(req.user);
 });
 
 router.get("/logout", async (req, res) => {
-  req.session.destroy();
-  res.json({ message: "Logout success" });
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    req.session.destroy();
+    res.status(204).json();
+  });
 });
 
-router.get("/user", (req, res) => {
-  const user = req.session.user;
-  res.json(user);
+router.get("/auth", (req, res) => {
+  if (!req.isAuthenticated()) {
+    res.status(400).json({ message: "Permission denied" });
+  } else {
+    res.status(200).json({});
+  }
 });
+
 module.exports = router;

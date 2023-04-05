@@ -48,7 +48,10 @@ export const AddPets = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ border: "1px solid black", padding: "1rem", margin: "1rem" }}
+    >
       {petUploadHelper.map((item) => {
         return (
           <div key={item}>
