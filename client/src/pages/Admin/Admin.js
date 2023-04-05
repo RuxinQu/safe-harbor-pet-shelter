@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { WithAuth, adminLogout } from "../../util/api";
 import { AddPets } from "../../components/Admin/AddPets";
+import { EditPets } from "../../components/Admin/EditPets";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ export default function Admin() {
           Logout
         </button>
         <AddPets />
+        <EditPets />
       </div>
     )
   );

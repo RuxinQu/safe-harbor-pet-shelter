@@ -30,4 +30,5 @@ export const petUploadHelper = [
   "size",
   "gender",
   "activity",
+  "description",
 ];

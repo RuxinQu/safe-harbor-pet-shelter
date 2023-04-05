@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { addPets } from "../../util/api";
 import { petUploadHelper } from "../../util/formHelper";
+import { PetForm } from "./PetForm";
 
 export const AddPets = () => {
   // turn the array to an obj with initial value empty String
@@ -48,36 +49,15 @@ export const AddPets = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{ border: "1px solid black", padding: "1rem", margin: "1rem" }}
-    >
-      {petUploadHelper.map((item) => {
-        return (
-          <div key={item}>
-            <label htmlFor={`${item}`}>{item}:</label>
-            <input
-              type="text"
-              id={`${item}`}
-              name={`${item}`}
-              value={formState[item]}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-        );
-      })}
-      <div>
-        <label htmlFor="images">Images:</label>
-        <input
-          type="file"
-          name="images"
-          multiple
-          onChange={handleImageChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-      {alertText}
-    </form>
+    <div>
+      <h3 style={{ textAlign: "center" }}>Add Pets</h3>
+      <PetForm
+        handleImageChange={handleImageChange}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        formState={formState}
+      />
+      <small style={{ color: "red" }}>{alertText}</small>
+    </div>
   );
 };

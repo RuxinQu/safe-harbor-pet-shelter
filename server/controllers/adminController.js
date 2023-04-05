@@ -7,13 +7,13 @@ const { Pet } = require("../models");
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 3, // 3 requests per windows
+  max: 5, // 5 requests per windows
   message: "Too many requests, please try again later",
 });
 
 router.post(
   "/add-pets",
-  isLoggedIn,
+  // isLoggedIn,
   upload.array("images", 10),
   async (req, res) => {
     try {
@@ -36,7 +36,6 @@ router.post(
 );
 
 router.post("/login", limiter, passport.authenticate("local"), (req, res) => {
-  console.log(req.user);
   res.json(req.user);
 });
 

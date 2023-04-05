@@ -229,7 +229,7 @@ export const AdoptForm = ({ pet }) => {
 
         <div>
           <label htmlFor="age">Age:</label>
-          <input type="number" id="age" name="age" value={pet.age} readOnly />
+          <input id="age" name="age" value={pet.age} readOnly />
         </div>
 
         <div>
