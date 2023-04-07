@@ -18,7 +18,10 @@ export const getPets = async (type) => {
 export const getPetsByName = async (name) => {
   const result = await fetch("/pets", options);
   const jsonResult = await result.json();
-  return jsonResult.filter((p) => p.name.includes(name));
+  return jsonResult.filter((p) => {
+    const petsName = p.name.toLowerCase();
+    return petsName.includes(name.toLowerCase());
+  });
 };
 
 export const getPetsById = async (id) => {
@@ -66,14 +69,46 @@ export const adminLogout = async () => {
   }
 };
 
-export const addPets = async (data) => {
+export const uploadImgs = async (data) => {
   try {
-    const response = await fetch("/admin/add-pets", {
+    const response = await fetch("/admin/upload-imgs", {
       mode: "cors",
       method: "POST",
       body: data,
     });
     return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
+export const addPets = async (data) => {
+  try {
+    const response = await fetch("/admin/add-pets", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
+export const deleteImg = async (key, petId, imgId) => {
+  try {
+    const response = await fetch(
+      `/admin/delete-img/${key}/pet/${petId}/img/${imgId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // return response;
   } catch (err) {
     return err.message;
   }

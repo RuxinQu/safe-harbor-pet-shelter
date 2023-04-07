@@ -3,7 +3,7 @@ import { addPets, deletePet, uploadImgs, deleteImg } from "../../util/api";
 import { petUploadHelper } from "../../util/formHelper";
 import { ButtonDialog } from "./ButtonDIalog";
 
-export const PetForm = ({ initFormState, initImgState, title }) => {
+export const PetFormContainer = ({ initFormState, initImgState, title }) => {
   const [formState, setFormState] = useState(initFormState);
   const [images, setImages] = useState(initImgState);
   const [alertText, setAlertText] = useState("");

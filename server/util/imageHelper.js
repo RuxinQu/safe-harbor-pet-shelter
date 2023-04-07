@@ -1,4 +1,4 @@
-const { S3Client } = require("@aws-sdk/client-s3");
+const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const { v4: uuidv4 } = require("uuid");
@@ -24,4 +24,19 @@ const upload = multer({
   }),
 });
 
-module.exports = upload;
+async function removeFileFromS3(req, res, next) {
+  const { key } = req.params;
+  const params = {
+    Bucket: process.env.AWS_S3_BUCKET_NAME,
+    Key: key,
+  };
+  try {
+    const command = new DeleteObjectCommand(params);
+    await s3.send(command);
+    next();
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { upload, removeFileFromS3 };
