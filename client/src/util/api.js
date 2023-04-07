@@ -60,7 +60,6 @@ export const adminLogin = async (data) => {
 export const adminLogout = async () => {
   try {
     const response = await fetch("/admin/logout", options);
-    window.location.assign("/admin/login");
     return response;
   } catch (err) {
     return err.message;

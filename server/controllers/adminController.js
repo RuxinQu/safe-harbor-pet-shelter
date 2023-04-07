@@ -13,7 +13,7 @@ const limiter = rateLimit({
 
 router.post(
   "/add-pets",
-  // isLoggedIn,
+  isLoggedIn,
   upload.array("images", 10),
   async (req, res) => {
     try {
@@ -35,40 +35,34 @@ router.post(
   }
 );
 
-router.delete(
-  "/delete-pet/:id",
-  // isLoggedIn,
+router.put("/edit-pet", isLoggedIn, async (req, res) => {});
 
-  async (req, res) => {
-    try {
-      await Pet.findByIdAndDelete(req.params.id);
-      res.status(200).json({ message: "Pet deleted" });
-    } catch (err) {
-      res.status(404).json();
-    }
+router.delete("/delete-pet/:id", isLoggedIn, async (req, res) => {
+  try {
+    await Pet.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "Pet deleted" });
+  } catch (err) {
+    res.status(404).json();
   }
-);
+});
 
 router.post("/login", limiter, passport.authenticate("local"), (req, res) => {
   res.json(req.user);
 });
 
-router.get("/logout", async (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout((err) => {
     if (err) {
       return next(err);
     }
     req.session.destroy();
+
     res.status(204).json();
   });
 });
 
-router.get("/auth", (req, res) => {
-  if (!req.isAuthenticated()) {
-    res.status(400).json({ message: "Permission denied" });
-  } else {
-    res.status(200).json({});
-  }
+router.get("/auth", isLoggedIn, (req, res) => {
+  res.status(200).json();
 });
 
 module.exports = router;

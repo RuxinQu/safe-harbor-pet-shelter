@@ -31,8 +31,21 @@ export default function Login() {
     }
   };
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>Admin</h1>
+    <div style={{ width: "80%", margin: "1rem auto" }}>
+      <div style={{ textAlign: "center" }}>
+        <h1>Admin</h1>
+        <small>
+          This feature is <span style={{ color: "#f44336" }}>exclusively</span>{" "}
+          for admins. <br />
+          You are permitted up to <span style={{ color: "#f44336" }}>
+            5
+          </span>{" "}
+          attempts with incorrect credentials before the account you are trying
+          to access gets locked for <span style={{ color: "#f44336" }}>15</span>{" "}
+          minutes.
+        </small>
+      </div>
+
       <form
         onSubmit={handleSubmit}
         style={{ width: 300, margin: "0 auto", padding: 30 }}
