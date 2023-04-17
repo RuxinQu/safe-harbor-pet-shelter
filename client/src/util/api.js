@@ -108,7 +108,7 @@ export const deleteImg = async (key, petId, imgId) => {
         },
       }
     );
-    // return response;
+    return response;
   } catch (err) {
     return err.message;
   }
@@ -122,6 +122,7 @@ export const deletePet = async (id) => {
         "Content-Type": "application/json",
       },
     });
+    window.location.reload();
     return response;
   } catch (err) {
     return err.message;

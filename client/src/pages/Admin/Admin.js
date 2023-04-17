@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { WithAuth, adminLogout, getPets, getPetsByName } from "../../util/api";
-import { PetForm } from "../../components/Admin/PetForm";
+import { PetFormContainer } from "../../components/Admin/PerFormContainer";
 import { petUploadHelper } from "../../util/formHelper";
 
 export default function Admin() {
@@ -52,12 +52,12 @@ export default function Admin() {
         <button onClick={adminLogout} style={{ margin: "1rem" }}>
           Logout
         </button>
+        {/* add pet section*/}
         <h3>Add Pets</h3>
-        {/* add pet form */}
-        <PetForm initFormState={addInitFormState} initImgState={[]} />
-        <h3>Edit Pets</h3>
-        {/* edit existing pets form */}
+        <PetFormContainer initFormState={addInitFormState} initImgState={[]} />
 
+        {/* edit existing pets section */}
+        <h3>Edit Pets</h3>
         {/* search input */}
         <div>
           <input
@@ -79,9 +79,8 @@ export default function Admin() {
         {pets.length ? (
           pets.map((p) => {
             const { images, ...editInitFormState } = p;
-
             return (
-              <PetForm
+              <PetFormContainer
                 key={p.name + p.type + p.gender + p.age}
                 initFormState={editInitFormState}
                 initImgState={images}
