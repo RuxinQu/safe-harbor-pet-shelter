@@ -24,7 +24,7 @@ export const getPetsByName = async (name) => {
   });
 };
 
-export const getPetsById = async (id) => {
+export const getPetById = async (id) => {
   const result = await fetch("/pets", options);
   const jsonResult = await result.json();
   return jsonResult.find((p) => p._id === id);
@@ -63,6 +63,7 @@ export const adminLogin = async (data) => {
 export const adminLogout = async () => {
   try {
     const response = await fetch("/admin/logout", options);
+    window.location.reload();
     return response;
   } catch (err) {
     return err.message;
@@ -75,21 +76,6 @@ export const uploadImgs = async (data) => {
       mode: "cors",
       method: "POST",
       body: data,
-    });
-    return response;
-  } catch (err) {
-    return err.message;
-  }
-};
-
-export const addPets = async (data) => {
-  try {
-    const response = await fetch("/admin/add-pets", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
     return response;
   } catch (err) {
@@ -114,8 +100,29 @@ export const deleteImg = async (key, petId, imgId) => {
   }
 };
 
+export const addPets = async (data) => {
+  try {
+    const response = await fetch("/admin/add-pets", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
 export const deletePet = async (id) => {
   try {
+    const pet = await getPetById(id);
+    const imagesArr = pet.images;
+    imagesArr.forEach(async (i) => {
+      const url = new URL(i.url);
+      await deleteImg(url.pathname.slice(1), id, i._id);
+    });
     const response = await fetch(`/admin/delete-pet/${id}`, {
       method: "DELETE",
       headers: {
@@ -123,6 +130,21 @@ export const deletePet = async (id) => {
       },
     });
     window.location.reload();
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
+export const editPet = async (id, data) => {
+  try {
+    const response = await fetch(`/admin/edit-pet/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     return response;
   } catch (err) {
     return err.message;

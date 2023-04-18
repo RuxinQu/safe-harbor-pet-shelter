@@ -9,18 +9,18 @@ export default function Admin() {
   const [pets, setPets] = useState([]);
   const [value, setValue] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // useEffect(() => {
-  //   const Auth = async () => {
-  //     const result = await WithAuth();
-  //     if (result.ok) {
-  //       setIsLoggedIn(true);
-  //     } else {
-  //       setIsLoggedIn(false);
-  //       navigate("/admin/login");
-  //     }
-  //   };
-  //   Auth();
-  // });
+  useEffect(() => {
+    const Auth = async () => {
+      const result = await WithAuth();
+      if (result.ok) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+        navigate("/admin/login");
+      }
+    };
+    Auth();
+  });
 
   useEffect(() => {
     const getAllPets = async () => {
@@ -30,10 +30,12 @@ export default function Admin() {
     getAllPets();
   }, []);
   // turn the array to an obj with initial value empty String
-  const addInitFormState = petUploadHelper.reduce(
+  const addInitFormStateText = petUploadHelper.reduce(
     (acc, curr) => ({ ...acc, [curr]: "" }),
     {}
   );
+  const addInitFormState = { ...addInitFormStateText, images: [] };
+
   const handleSearch = async () => {
     const pets = await getPetsByName(value);
     setPets([...pets]);
@@ -54,7 +56,7 @@ export default function Admin() {
         </button>
         {/* add pet section*/}
         <h3>Add Pets</h3>
-        <PetFormContainer initFormState={addInitFormState} initImgState={[]} />
+        <PetFormContainer initFormState={addInitFormState} />
 
         {/* edit existing pets section */}
         <h3>Edit Pets</h3>
@@ -78,12 +80,11 @@ export default function Admin() {
         {/* by default showing all the pets */}
         {pets.length ? (
           pets.map((p) => {
-            const { images, ...editInitFormState } = p;
+            // const { images, ...editInitFormState } = p;
             return (
               <PetFormContainer
                 key={p.name + p.type + p.gender + p.age}
-                initFormState={editInitFormState}
-                initImgState={images}
+                initFormState={p}
                 title={"edit"}
               />
             );

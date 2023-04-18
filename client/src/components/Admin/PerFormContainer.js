@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { addPets, deletePet, uploadImgs, deleteImg } from "../../util/api";
-import { petUploadHelper } from "../../util/formHelper";
-import { ButtonDialog } from "./ButtonDIalog";
+import { addPets, editPet, uploadImgs } from "../../util/api";
 import { PetForm } from "./PetForm";
 
-export const PetFormContainer = ({ initFormState, initImgState, title }) => {
+export const PetFormContainer = ({ initFormState, title }) => {
   const [formState, setFormState] = useState(initFormState);
-  const [images, setImages] = useState(initImgState);
+  // for the multer upload form, this property will be appended to formstate
+  const [formImage, setFormImage] = useState([]);
+  // for displaying the pets images retrieved from the db
+  const [petImage, setPetImage] = useState(initFormState.images);
   const [alertText, setAlertText] = useState("");
   const [disableButton, setDisableButton] = useState(false);
 
@@ -15,21 +16,17 @@ export const PetFormContainer = ({ initFormState, initImgState, title }) => {
     setFormState({ ...formState, [name]: value });
   };
 
-  const handleImageChange = (event) => {
+  const handleFormImageChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
-    setImages([...images, ...selectedFiles]);
+    setFormImage([...formImage, ...selectedFiles]);
   };
 
   const handleSubmit = async () => {
     setDisableButton(true);
     // create new FormData
     const data = new FormData();
-    // append the text data
-    petUploadHelper.forEach((item) => {
-      data.append(item, formState[item]);
-    });
     // append the images
-    images.forEach((image) => {
+    formImage.forEach((image) => {
       data.append("images", image);
     });
     try {
@@ -52,31 +49,27 @@ export const PetFormContainer = ({ initFormState, initImgState, title }) => {
   };
 
   const handleEdit = async () => {
-    // setDisableButton(true);
+    setDisableButton(true);
     const data = new FormData();
-    // append the text data
-    petUploadHelper.forEach((item) => {
-      data.append(item, formState[item]);
-    });
     // append the images
-    images.forEach((image) => {
+    formImage.forEach((image) => {
       data.append("images", image);
     });
     try {
-      const response = await fetch("/admin/edit-pet", {
-        mode: "cors",
-        method: "PUT",
-        body: data,
-      });
-      // if (response.ok) {
-      //   setAlertText("new pet added");
-      //   setFormState(initFormState);
-      //   setImages(initImgState);
-      //   setDisableButton(false);
-      //   setTimeout(() => {
-      //     setAlertText("");
-      //   }, 2000);
-      // }
+      if (formImage.length) {
+        const uploadImgResponse = await uploadImgs(data);
+        const imageUrl = await uploadImgResponse.json();
+        formState.images.push(...imageUrl);
+      }
+      const response = await editPet(formState._id, formState);
+      if (response.ok) {
+        setAlertText("pet updated");
+        setDisableButton(false);
+        setFormImage([]);
+        setTimeout(() => {
+          setAlertText("");
+        }, 2000);
+      }
     } catch (error) {
       setAlertText("failed to add the pet");
       console.log(error);
@@ -86,15 +79,13 @@ export const PetFormContainer = ({ initFormState, initImgState, title }) => {
   return (
     <PetForm
       formState={formState}
-      images={images}
+      handleInputChange={handleInputChange}
+      handleFormImageChange={handleFormImageChange}
+      petImage={petImage}
+      setPetImage={setPetImage}
       disableButton={disableButton}
       alertText={alertText}
       title={title}
-      setImages={setImages}
-      deleteImg={deleteImg}
-      deletePet={deletePet}
-      handleInputChange={handleInputChange}
-      handleImageChange={handleImageChange}
       handleSubmit={handleSubmit}
       handleEdit={handleEdit}
     />
