@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link as ReactRouterLink } from "react-router-dom";
-import { getPetsById } from "../util/api";
-import { AdoptForm } from "../components/Pet/AdoptForm";
+import { getPetById } from "../../util/api";
+import { AdoptForm } from "../../components/Pet/AdoptForm";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 
@@ -11,7 +11,7 @@ export default function Adopt() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const handleSearch = async (id) => {
-      const petById = await getPetsById(id);
+      const petById = await getPetById(id);
       setPet(petById);
       setLoading(false);
     };

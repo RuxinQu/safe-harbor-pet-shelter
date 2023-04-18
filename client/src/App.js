@@ -1,16 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppNavbar } from "./components/AppNavbar";
 import { Footer } from "./components/Footer";
+import Home from "./pages/Shelter/Home";
+import Pet from "./pages/Pets/Pet";
+import SearchPage from "./pages/Pets/SearchPage";
+import PetDetail from "./pages/Pets/PetDetail";
+import Adopt from "./pages/Pets/Adopt";
+import Contact from "./pages/Shelter/Contact";
+import FAQ from "./pages/Shelter/FAQ";
+import Donate from "./pages/Donate";
 
-import Home from "./pages/Home";
-import Pet from "./pages/Pet";
-import SearchPage from "./pages/SearchPage";
-import PetDetail from "./pages/PetDetail";
-import Adopt from "./pages/Adopt";
-import Contact from "./pages/Contact";
-import FAQ from "./pages/FAQ";
-import "./App.css";
+import Login from "./pages/Admin/Login";
+import Admin from "./pages/Admin/Admin";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./App.css";
 
 const theme = createTheme({
   palette: {
@@ -34,6 +38,9 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/question/:questionId" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/" element={<Admin />} />
         </Routes>
         <Footer />
       </Router>

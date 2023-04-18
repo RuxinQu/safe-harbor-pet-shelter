@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { Banner } from "../components/Pet/Banner";
-import { Search } from "../components/Pet/Search";
-import { PetCard } from "../components/Pet/PetCard";
-import { getPets } from "../util/api";
+import { Banner } from "../../components/Pet/Banner";
+import { Search } from "../../components/Pet/Search";
+import { PetCard } from "../../components/Pet/PetCard";
+import { getPets } from "../../util/api";
 
 export default function Pet() {
   useEffect(() => {

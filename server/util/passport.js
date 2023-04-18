@@ -1,17 +1,23 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("../models/User");
+const bcrypt = require("bcrypt");
+require("dotenv").config();
+
+const user = {
+  id: process.env.ADMIN_ID,
+  username: process.env.ADMIN_USERNAME,
+  password: process.env.ADMIN_PASSWORD_HASH,
+};
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const user = await User.findOne({ where: { username: username } });
-      if (!user) {
+      if (username !== user.username) {
         return done(null, false, {
-          message: "can not find username",
+          message: "Wrong username",
         });
       }
-      const matchPassword = await user.checkPassword(password);
+      const matchPassword = await bcrypt.compare(password, user.password);
       return matchPassword
         ? done(null, user)
         : done(null, false, { message: "Incorrect password" });
@@ -21,12 +27,12 @@ passport.use(
   })
 );
 
-passport.serializeUser(function (user, done) {
+// configure Passport session serialization
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
-
-passport.deserializeUser(function (id, done) {
-  User.findByPk(id).then(function (user) {
+passport.deserializeUser((id, done) => {
+  if (id === user.id) {
     done(null, user);
-  });
+  }
 });

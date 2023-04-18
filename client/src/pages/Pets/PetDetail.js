@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getPetsById } from "../util/api";
-import { Detail } from "../components/Pet/Detail";
+import { getPetById } from "../../util/api";
+import { Detail } from "../../components/Pet/Detail";
 
 export default function PetDetail() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ export default function PetDetail() {
 
   useEffect(() => {
     const handleSearch = async (id) => {
-      const petById = await getPetsById(id);
+      const petById = await getPetById(id);
       petById.ImageGalleryArr = [];
       petById.images.forEach((img) => {
         petById.ImageGalleryArr.push({ original: img.url, thumbnail: img.url });
