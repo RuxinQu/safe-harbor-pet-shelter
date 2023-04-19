@@ -95,3 +95,40 @@ export const imageData = [
     cols: 2,
   },
 ];
+
+export const dogShelter = [
+  {
+    img: `/assets/dog-shelter-1.JPG`,
+    alt: "dog-shelter",
+    rows: 3,
+    cols: 1,
+  },
+  {
+    img: `/assets/dog-shelter-2.JPG`,
+    alt: "dog-shelter",
+    rows: 1,
+    cols: 1,
+  },
+  {
+    img: `/assets/dog-shelter-3.JPG`,
+    alt: "dog-shelter",
+    rows: 1,
+    cols: 1,
+  },
+  {
+    img: `/assets/dog-shelter-4.JPG`,
+    alt: "dog-shelter",
+    rows: 1,
+    cols: 1,
+  },
+];
+
+export const catShelter = [
+  { img: `/assets/cat-shelter-1.JPG`, alt: "cat-shelter" },
+];
+
+export const charitySale = [
+  { img: `/assets/activity-1.JPG`, alt: "activity" },
+  { img: `/assets/activity-2.JPG`, alt: "activity" },
+  { img: `/assets/activity-3.JPG`, alt: "activity", rows: 1, cols: 2 },
+];
