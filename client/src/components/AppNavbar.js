@@ -17,8 +17,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 const pages = [
   { title: "Home", path: "/" },
   { title: "Find a Pet", path: "/pet" },
+  { title: "About", path: "/about-us" },
   { title: "Contact", path: "/contact" },
-  { title: "NEWS", path: "/news" },
 ];
 export const AppNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
