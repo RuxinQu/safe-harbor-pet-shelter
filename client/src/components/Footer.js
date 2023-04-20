@@ -26,15 +26,32 @@ const categories = [
 export function Footer() {
   return (
     <Box
-      sx={{ flexGrow: 1, backgroundColor: "#152238", color: "#e1e1e1", py: 2 }}
+      sx={{
+        flexGrow: 1,
+        backgroundColor: "#152238",
+        color: "#e1e1e1",
+        py: 2,
+      }}
     >
-      <Grid container>
-        <Grid xs={12} md={5} lg={4} textAlign="center">
+      <Grid
+        container
+        sx={{ mx: "auto", width: { xs: "90%", md: "70%", xl: 1200 } }}
+      >
+        {/* icon and title on the top left */}
+        <Grid xs={12} md={6} lg={4} textAlign="center">
           <img src="/logo.png" alt="logo" width="100px" className="logo" />
           <Item sx={{ fontSize: "1rem" }}>Safe Harbor Pet Shelter</Item>
         </Grid>
-        <Grid container xs={12} md={7} lg={8}>
-          <Grid xs={6} lg={3}>
+
+        <Grid
+          container
+          xs={12}
+          md={6}
+          lg={8}
+          sx={{ display: "flex", justifyContent: "center" }}
+        >
+          {/* categories */}
+          <Grid xs={6} lg={4}>
             <Item>
               <Box
                 id="quick-links"
@@ -73,7 +90,8 @@ export function Footer() {
               </Box>
             </Item>
           </Grid>
-          <Grid xs={6} lg={3}>
+          {/* categories */}
+          <Grid xs={6} lg={4}>
             <Item>
               <Box
                 id="category-b"
@@ -103,35 +121,6 @@ export function Footer() {
               </Box>
             </Item>
           </Grid>
-          <Grid xs={6} lg={3}>
-            <Item>
-              <Box
-                id="category-c"
-                sx={{ fontSize: "12px", textTransform: "uppercase" }}
-              >
-                Pet Care
-              </Box>
-              <Box
-                component="ul"
-                aria-labelledby="category-b"
-                sx={{ pl: 2, listStyle: "none" }}
-              >
-                {/* {quickLinks.map((nav) => (
-                  <li
-                    key={nav.title}
-                    fontSize="11px"
-                    component={ReactRouterLink}
-                    to={nav.path}
-                    underline="hover"
-                    color="inherit"
-                    sx={{ textTransform: "uppercase" }}
-                  >
-                    {nav.title}
-                  </li>
-                ))} */}
-              </Box>
-            </Item>
-          </Grid>
         </Grid>
         <Grid
           xs={12}
@@ -143,19 +132,13 @@ export function Footer() {
         >
           <Grid sx={{ order: { xs: 2, sm: 1 } }}>
             <Item sx={{ fontSize: "small" }}>
-              Copyright © {new Date().getFullYear()} - RuxinQu
+              Copyright © {new Date().getFullYear()} - Safe Harbor Pet Shelter.
+              Developed by{" "}
+              <Link href="http://ruxinqu.com" color={"#FFA500"}>
+                Ruxin Qu
+              </Link>
+              .
             </Item>
-          </Grid>
-          <Grid container sx={{ order: { xs: 1, sm: 2 } }}>
-            <Grid>
-              <Item>Link A</Item>
-            </Grid>
-            <Grid>
-              <Item>Link B</Item>
-            </Grid>
-            <Grid>
-              <Item>Link C</Item>
-            </Grid>
           </Grid>
         </Grid>
       </Grid>

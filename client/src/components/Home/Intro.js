@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "@mui/material/Link";
 import { Link as ReactRouterLink } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -10,19 +10,9 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import PetsIcon from "@mui/icons-material/Pets";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { qna } from "../../util/data";
 
 export const Intro = () => {
-  const [scroll, setScroll] = useState(false);
-  const showArrow = () => {
-    if (window.scrollY >= 80) {
-      setScroll(true);
-    } else {
-      setScroll(false);
-    }
-  };
-  window.addEventListener("scroll", showArrow);
   return (
     <Box
       sx={{
@@ -212,23 +202,6 @@ export const Intro = () => {
           );
         })}
       </Box>
-
-      {scroll && (
-        <Button
-          aria-label="up"
-          variant="contained"
-          sx={{
-            position: "fixed",
-            bottom: 0,
-            right: "10%",
-          }}
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-        >
-          <ArrowUpwardIcon />
-        </Button>
-      )}
     </Box>
   );
 };

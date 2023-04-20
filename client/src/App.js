@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppNavbar } from "./components/AppNavbar";
 import { Footer } from "./components/Footer";
+import { ScrollButton } from "./components/ScrollButton";
 import Home from "./pages/Shelter/Home";
 import Aboutus from "./pages/Shelter/About";
 import Pet from "./pages/Pets/Pet";
@@ -10,7 +11,6 @@ import Adopt from "./pages/Pets/Adopt";
 import Contact from "./pages/Shelter/Contact";
 import FAQ from "./pages/Shelter/FAQ";
 import Donate from "./pages/Donate";
-
 import Login from "./pages/Admin/Login";
 import Admin from "./pages/Admin/Admin";
 
@@ -45,6 +45,7 @@ function App() {
           <Route path="/admin/" element={<Admin />} />
         </Routes>
         <Footer />
+        <ScrollButton />
       </Router>
     </ThemeProvider>
   );
