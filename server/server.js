@@ -2,6 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 require("./util/passport");
+var expressStaticGzip = require("express-static-gzip");
 
 const db = require("./db/connection");
 const router = require("./controllers");
@@ -10,6 +11,7 @@ const { transporter } = require("./util/emailHelper");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 app.use(
@@ -29,6 +31,19 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+app.use(
+  expressStaticGzip(path.join(__dirname, "../client/build"), {
+    enableBrotli: true,
+    customCompressions: [
+      {
+        encodingName: "deflate",
+        fileExtension: "zz",
+      },
+    ],
+    orderPreference: ["br"],
+  })
+);
 
 // mongoose.set("debug", true);
 
