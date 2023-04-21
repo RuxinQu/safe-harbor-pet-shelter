@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const {
-  generateHtml,
+  generateAdoptHtml,
+  generateContactHtml,
   mailOptions,
   transporter,
 } = require("../util/emailHelper");
@@ -16,9 +17,35 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/adopt", (req, res) => {
-  const html = generateHtml(req);
+  const html = generateAdoptHtml(req);
   transporter.sendMail(
-    { ...mailOptions, html, text: JSON.stringify(req.body) },
+    {
+      ...mailOptions,
+      subject: "Adopt Request",
+      html,
+      text: JSON.stringify(req.body),
+    },
+    function (err, data) {
+      if (err) {
+        console.log("Error " + err);
+        res.status(500).json();
+      } else {
+        console.log("Email sent successfully");
+        res.status(200).json();
+      }
+    }
+  );
+});
+
+router.post("/contact", (req, res) => {
+  const html = generateContactHtml(req);
+  transporter.sendMail(
+    {
+      ...mailOptions,
+      subject: req.body.subject,
+      html,
+      text: JSON.stringify(req.body),
+    },
     function (err, data) {
       if (err) {
         console.log("Error " + err);

@@ -10,10 +10,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import InputLabel from "@mui/material/InputLabel";
-import Checkbox from "@mui/material/Checkbox";
 import { Typography } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
-import FormControlLabel from "@mui/material/FormControlLabel";
+
 const menu = [
   "Adoption Inquiry",
   "Volunteering",
@@ -32,26 +31,43 @@ const defaultValues = {
 };
 
 export const ContactForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     watch,
     control,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm({ defaultValues, mode: "onBlur" });
 
   const selectedOption = watch("subject");
 
-  const onSubmit = (data) => {
-    console.log(data);
-    toast.success("Form submitted!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    const response = await sendContactForm(data);
+    if (response.ok) {
+      toast.success("Form submitted!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      reset();
+    } else {
+      toast.error("Fail to submit the form!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+    setIsSubmitting(false);
   };
 
   return (
@@ -161,7 +177,7 @@ export const ContactForm = () => {
           name="message"
           control={control}
           rules={{
-            required: "Subject is required",
+            required: "Message is required",
           }}
           render={({ field }) => (
             <TextField
@@ -183,6 +199,7 @@ export const ContactForm = () => {
           endIcon={<SendIcon />}
           sx={{ width: 100 }}
           type="submit"
+          disabled={isSubmitting}
         >
           Send
         </Button>

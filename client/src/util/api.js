@@ -47,7 +47,7 @@ export const sendAdoptForm = async (data) => {
 
 export const sendContactForm = async (data) => {
   try {
-    const response = await fetch("/contact", {
+    const response = await fetch("/pets/contact", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
