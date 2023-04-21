@@ -14,10 +14,9 @@ const transporter = nodemailer.createTransport({
 const mailOptions = {
   from: process.env.EMAIL,
   to: "rosheenqu@gmail.com",
-  subject: "Adopt Request",
 };
 
-const generateHtml = (req) => {
+const generateAdoptHtml = (req) => {
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -121,4 +120,47 @@ const generateHtml = (req) => {
 </html>`;
 };
 
-module.exports = { transporter, mailOptions, generateHtml };
+const generateContactHtml = (req) => {
+  return `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Form</title>
+    </head>
+    
+    <body>
+        <div>
+            <span>Subject:</span>
+            <span>${req.body.otherSubject}</span>
+        </div>
+        <div>
+            <span>Name:</span>
+            <span>${req.body.name}</span>
+        </div>
+        <div>
+            <span>Email:</span>
+            <span>${req.body.email}</span>
+        </div>
+        <div>
+            <span>Phone:</span>
+            <span>${req.body.phone}</span>
+        </div>
+        <div>
+            <span>Message:</span>
+            <span>${req.body.message}</span>
+        </div>
+    
+    </body>
+    
+    </html>`;
+};
+
+module.exports = {
+  transporter,
+  mailOptions,
+  generateAdoptHtml,
+  generateContactHtml,
+};

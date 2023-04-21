@@ -30,6 +30,18 @@ html {
   padding-inline-start: 1ch;
 }
 
+.contact-title {
+  -webkit-text-stroke: 2px #152238; /* fallback for older browsers */
+}
+
+.css-jp66c2 {
+  padding-left: 0;
+}
+
+.error {
+  color: #f44336;
+}
+
 @media (max-width: 600px) {
   .home-img {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);

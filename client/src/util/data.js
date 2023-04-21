@@ -127,7 +127,7 @@ export const catShelter = [
   { img: `/assets/cat-shelter-1.JPG`, alt: "cat-shelter" },
 ];
 
-export const charitySale = [
+export const adoption = [
   { img: `/assets/activity-1.JPG`, alt: "activity" },
   { img: `/assets/activity-2.JPG`, alt: "activity" },
   { img: `/assets/activity-3.JPG`, alt: "activity", rows: 1, cols: 2 },

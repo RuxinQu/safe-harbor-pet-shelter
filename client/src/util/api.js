@@ -45,6 +45,21 @@ export const sendAdoptForm = async (data) => {
   }
 };
 
+export const sendContactForm = async (data) => {
+  try {
+    const response = await fetch("/pets/contact", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.message;
+  }
+};
+
 export const adminLogin = async (data) => {
   try {
     const response = await fetch("/admin/login", {
