@@ -4,7 +4,6 @@ const passport = require("passport");
 require("./util/passport");
 
 const db = require("./db/connection");
-const mongoose = require("mongoose");
 const router = require("./controllers");
 const { transporter } = require("./util/emailHelper");
 

@@ -1,72 +1,40 @@
-7R[PPRg7,nhtxA^\_
+# Safe Harbor Pet Shelter
 
-# Getting Started with Create React App
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![MUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+[![Multer](https://img.shields.io/badge/Multer-880808?style=for-the-badge&logoColor=white)](https://www.npmjs.com/package/multer)
+![Passport](https://img.shields.io/badge/Passport.js-028A0F?style=for-the-badge&logoColor=white)
+[![Nodemailer](https://img.shields.io/badge/Nodemailer-0492C2?style=for-the-badge&logoColor=white)](https://www.npmjs.com/package/nodemailer)
+[![Bcrypt](https://img.shields.io/badge/Bcrypt-028A0F?style=for-the-badge&logoColor=white)](https://www.npmjs.com/package/bcrypt)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+A full stack project for Safe Harbor Pet Shelter. Users can click and view the available pets for adoption. An Admin page is added for the administrator to be able to manage the pets.
 
-In the project directory, you can run:
+Pet images are saved to [Amazon S3 bucket](https://aws.amazon.com/s3/). Users can contact the shelter through the adoption form or contact form. The form is sent by Email via [Nodemailer](https://www.npmjs.com/package/nodemailer).
 
-### `npm start`
+View the deployed website: https://safe-harbor-pet-shelter.herokuapp.com
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Type/Enter your name and thoughts, upload an image and click 'upload'. If successful, a message "Image uploaded" will pop up. Then click the 'submit' button and your thoughts will be saved!
 
-### `npm test`
+### Screenshot(s)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![demo](./client/public/assets/demo.png)
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Amazon Web Services
+- Infrastructure as a Service (IaaS)
+- Express
+- Multer
+- Redux
+- The front-end styling code is provided by UW coding bootcamp.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contact
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ruxinqu@gmail.com or open an issue on this repository
