@@ -35,14 +35,11 @@ export default function Login() {
       <div style={{ textAlign: "center" }}>
         <h1>Admin</h1>
         <small>
-          This feature is <span style={{ color: "#f44336" }}>exclusively</span>{" "}
-          for admins. <br />
-          You are permitted up to <span style={{ color: "#f44336" }}>
-            5
-          </span>{" "}
-          attempts with incorrect credentials before the account you are trying
-          to access gets locked for <span style={{ color: "#f44336" }}>15</span>{" "}
-          minutes.
+          This feature is <span className="error">exclusively</span> for admins.{" "}
+          <br />
+          You are permitted up to <span className="error">5</span> attempts with
+          incorrect credentials before the account you are trying to access gets
+          locked for <span className="error">15</span> minutes.
         </small>
       </div>
 

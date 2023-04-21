@@ -38,6 +38,10 @@ html {
   padding-left: 0;
 }
 
+.error {
+  color: #f44336;
+}
+
 @media (max-width: 600px) {
   .home-img {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);

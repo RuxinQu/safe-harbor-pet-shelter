@@ -147,7 +147,7 @@ export const Intro = () => {
         }}
       >
         <Typography
-          color="#f44336"
+          className="error"
           sx={{ fontWeight: 700, fontSize: { xs: "1.3rem", md: "1.8rem" } }}
         >
           --- We Need Help ---
