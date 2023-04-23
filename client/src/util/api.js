@@ -6,7 +6,7 @@ const options = {
 };
 
 export const getPets = async (type) => {
-  const result = await fetch("/pets", options);
+  const result = await fetch("/api/pets", options);
   const jsonResult = await result.json();
   if (type === "all") {
     return jsonResult;
@@ -16,7 +16,7 @@ export const getPets = async (type) => {
 };
 
 export const getPetsByName = async (name) => {
-  const result = await fetch("/pets", options);
+  const result = await fetch("/api/pets", options);
   const jsonResult = await result.json();
   return jsonResult.filter((p) => {
     const petsName = p.name.toLowerCase();
@@ -25,14 +25,14 @@ export const getPetsByName = async (name) => {
 };
 
 export const getPetById = async (id) => {
-  const result = await fetch("/pets", options);
+  const result = await fetch("/api/pets", options);
   const jsonResult = await result.json();
   return jsonResult.find((p) => p._id === id);
 };
 
 export const sendAdoptForm = async (data) => {
   try {
-    const response = await fetch("/pets/adopt", {
+    const response = await fetch("/api/pets/adopt", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -41,13 +41,13 @@ export const sendAdoptForm = async (data) => {
     });
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
 export const sendContactForm = async (data) => {
   try {
-    const response = await fetch("/pets/contact", {
+    const response = await fetch("/api/pets/contact", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -56,7 +56,7 @@ export const sendContactForm = async (data) => {
     });
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -71,7 +71,7 @@ export const adminLogin = async (data) => {
     });
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -81,7 +81,7 @@ export const adminLogout = async () => {
     window.location.reload();
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -92,9 +92,10 @@ export const uploadImgs = async (data) => {
       method: "POST",
       body: data,
     });
-    return response;
+    const jsonResponse = await response.json();
+    return jsonResponse;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -111,7 +112,7 @@ export const deleteImg = async (key, petId, imgId) => {
     );
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -126,7 +127,7 @@ export const addPets = async (data) => {
     });
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -147,7 +148,7 @@ export const deletePet = async (id) => {
     window.location.reload();
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -162,7 +163,7 @@ export const editPet = async (id, data) => {
     });
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };
 
@@ -171,6 +172,6 @@ export const WithAuth = async () => {
     const response = await fetch("/admin/auth", options);
     return response;
   } catch (err) {
-    return err.message;
+    console.log(err);
   }
 };

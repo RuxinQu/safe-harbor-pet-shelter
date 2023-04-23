@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("passport");
 require("./util/passport");
 var expressStaticGzip = require("express-static-gzip");
@@ -17,6 +18,9 @@ require("dotenv").config();
 app.use(
   session({
     secret: process.env.SESSION_SECRET_KEY,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
     cookie: {
       maxAge: 300000,
       httpOnly: true,
@@ -50,6 +54,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 db.once("open", () => {
   app.listen(PORT, () => {
