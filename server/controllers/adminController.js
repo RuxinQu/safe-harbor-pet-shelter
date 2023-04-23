@@ -23,7 +23,7 @@ router.post(
         return { url: file.location };
       });
       // Do something with the file URLs, such as storing them in a database or sending them in a response
-      res.status(200).json(images);
+      res.status(200).json({ images });
     } catch (err) {
       console.error(err);
       res.status(500).json({
