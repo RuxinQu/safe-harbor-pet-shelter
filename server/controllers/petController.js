@@ -10,9 +10,9 @@ const { Pet } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const allPets = await Pet.find();
-    res.status(200).json(allPets);
+    res.status(200).send(allPets);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).send(err);
   }
 });
 
@@ -28,10 +28,10 @@ router.post("/adopt", (req, res) => {
     function (err, data) {
       if (err) {
         console.log("Error " + err);
-        res.status(500).json();
+        res.status(500).send();
       } else {
         console.log("Email sent successfully");
-        res.status(200).json();
+        res.status(200).send();
       }
     }
   );
@@ -49,10 +49,10 @@ router.post("/contact", (req, res) => {
     function (err, data) {
       if (err) {
         console.log("Error " + err);
-        res.status(500).json();
+        res.status(500).send();
       } else {
         console.log("Email sent successfully");
-        res.status(200).json();
+        res.status(200).send();
       }
     }
   );

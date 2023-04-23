@@ -31,15 +31,14 @@ export const PetFormContainer = ({ initFormState, title }) => {
     });
     try {
       const uploadImgResponse = await uploadImgs(data);
-      const imageUrl = await uploadImgResponse.json();
-      formState.images = imageUrl;
+      formState.images = uploadImgResponse.images;
       const addPetsResponse = await addPets(formState);
       if (addPetsResponse.ok) {
         setAlertText("new pet added");
         setDisableButton(false);
         setTimeout(() => {
           setAlertText("");
-          window.location.reload();
+          // window.location.reload();
         }, 2000);
       }
     } catch (error) {

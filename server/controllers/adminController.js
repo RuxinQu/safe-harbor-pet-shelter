@@ -23,10 +23,10 @@ router.post(
         return { url: file.location };
       });
       // Do something with the file URLs, such as storing them in a database or sending them in a response
-      res.status(200).json(images);
+      res.status(200).send({ images });
     } catch (err) {
       console.error(err);
-      res.status(500).json({
+      res.status(500).send({
         message: "Error uploading files",
         error: err.message,
       });
@@ -57,11 +57,11 @@ router.post("/add-pets", isLoggedIn, async (req, res) => {
   try {
     const newPet = await Pet.create(req.body);
     newPet
-      ? res.status(201).json({ message: "new pet added" })
-      : res.status(400).json({ message: "failed to add new pet" });
+      ? res.status(201).send({ message: "new pet added" })
+      : res.status(400).send({ message: "failed to add new pet" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({
+    res.status(500).send({
       message: "Error uploading files",
       error: err.message,
     });
@@ -73,23 +73,23 @@ router.put("/edit-pet/:id", isLoggedIn, async (req, res) => {
     const newPet = await Pet.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    res.status(200).json(newPet);
+    res.status(200).send(newPet);
   } catch (err) {
-    res.status(500).json({ message: "Error editing pets" });
+    res.status(500).send({ message: "Error editing pets" });
   }
 });
 
 router.delete("/delete-pet/:id", isLoggedIn, async (req, res) => {
   try {
     await Pet.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: "Pet deleted" });
+    res.status(200).send({ message: "Pet deleted" });
   } catch (err) {
-    res.status(404).json();
+    res.status(404).send();
   }
 });
 
 router.post("/login", limiter, passport.authenticate("local"), (req, res) => {
-  res.json(req.user);
+  res.send(req.user);
 });
 
 router.get("/logout", (req, res) => {
@@ -99,12 +99,12 @@ router.get("/logout", (req, res) => {
     }
     req.session.destroy();
 
-    res.status(204).json();
+    res.status(204).send();
   });
 });
 
 router.get("/auth", isLoggedIn, (req, res) => {
-  res.status(200).json();
+  res.status(200).send();
 });
 
 module.exports = router;
