@@ -38,7 +38,7 @@ export const PetFormContainer = ({ initFormState, title }) => {
         setDisableButton(false);
         setTimeout(() => {
           setAlertText("");
-          // window.location.reload();
+          window.location.reload();
         }, 2000);
       }
     } catch (error) {
@@ -57,7 +57,7 @@ export const PetFormContainer = ({ initFormState, title }) => {
     try {
       if (formImage.length) {
         const uploadImgResponse = await uploadImgs(data);
-        const imageUrl = await uploadImgResponse.json();
+        const imageUrl = uploadImgResponse.images;
         formState.images.push(...imageUrl);
       }
       const response = await editPet(formState._id, formState);

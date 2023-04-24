@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// send the adoption form to the shelter via email
 router.post("/adopt", (req, res) => {
   const html = generateAdoptHtml(req);
   transporter.sendMail(

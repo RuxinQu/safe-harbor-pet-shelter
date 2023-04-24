@@ -34,6 +34,7 @@ router.post(
   }
 );
 
+// delete the image from s3 and also remove it from the mongodb table
 router.delete(
   "/delete-img/:key/pet/:petId/img/:imgId",
   isLoggedIn,

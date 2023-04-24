@@ -4,6 +4,7 @@ const multerS3 = require("multer-s3");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
+// create a new s3 client, credentials are needed for deploy the website.
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {

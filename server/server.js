@@ -18,6 +18,7 @@ require("dotenv").config();
 app.use(
   session({
     secret: process.env.SESSION_SECRET_KEY,
+    // store the session data in mongodb
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
     }),
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+// render the compressed build file
 app.use(
   expressStaticGzip(path.join(__dirname, "../client/build"), {
     enableBrotli: true,
