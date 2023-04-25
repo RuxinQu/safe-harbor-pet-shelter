@@ -27,7 +27,7 @@ The deployed website can be accessed at https://safe-harbor-pet-shelter.herokuap
 1. Users can filter cats or dogs, or search for a pet by name.
 1. If a user is interested in adopting a pet, they can complete and submit the adoption form.
 1. Users can click on 'Learn More' or 'About Us' to learn more about Safe Harbor Pet Shelter. They can donate to the shelter, or contact the shelter through the contact form on the 'Contact' page.
-1. An admin page has been added for easier management of pet information. If a user attempts to enter incorrect credentials **5** times on the Admin login page, the account will be locked for **15** minutes.
+1. An admin page can be accessed through https://safe-harbor-pet-shelter.herokuapp.com/admin. It is added for easier management of pet information. If a user attempts to enter incorrect credentials **5** times on the Admin login page, the account will be locked for **15** minutes.
 1. Administrators can add new pets, edit pet data, and delete pets through the admin page. The page supports multiple image uploads.
 1. Click on the link to the deployed website and explore all features🎆! Hope that all of the furry babies will find their forever homes❤️.
 

@@ -23,7 +23,8 @@ export default function Contact() {
         <Typography sx={{ my: "2rem" }}>
           We are a non-governmental animal protection organization founded by
           Ms. Bu Yi(Habao) in Jiaxing, China in 2002. Currently, our shelter
-          houses 800+ cats and dogs.
+          houses 800+ cats and dogs. As we have just started building the
+          website, there may still be some incomplete information.
         </Typography>
         <Typography sx={{ my: "2rem" }}>
           Have a question about the adoption process or our shelter? Feel free

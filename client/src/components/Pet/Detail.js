@@ -37,6 +37,9 @@ export const Detail = ({ id, pet, loading }) => {
           <Box sx={{ p: "2rem", mx: "auto" }}>
             <Typography variant="h6">Breed: {pet.breed}</Typography>
             <Typography variant="h6">Gender: {pet.gender}</Typography>
+            <Typography variant="h6">Size: {pet.size}</Typography>
+            <Typography variant="h6">Age: {pet.age}</Typography>
+            <Typography variant="h6">Activity Level: {pet.activity}</Typography>
             <Link component={ReactRouterLink} to={`/pet/adopt/${id}`}>
               Adopt {pet.name}
             </Link>
@@ -44,7 +47,12 @@ export const Detail = ({ id, pet, loading }) => {
         </Box>
         <Box sx={{ width: { xs: "100%", sm: "80%", md: 800 }, mx: "auto" }}>
           <Typography variant="body1" sx={{ my: "1rem" }}>
-            {pet.description}
+            Description: {pet.description}
+          </Typography>
+          <Typography variant="body2" color="">
+            Note: This website is still new, so some pet data is still
+            incomplete. If you have any questions, please feel free to contact
+            us.
           </Typography>
         </Box>
       </Box>
