@@ -9,7 +9,7 @@ export default function Admin() {
   const navigate = useNavigate();
   const [pets, setPets] = useState([]);
   const [value, setValue] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const authToken = Cookies.get("AuthToken");
   useEffect(() => {
     const Auth = async () => {
