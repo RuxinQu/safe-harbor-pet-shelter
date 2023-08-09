@@ -21,6 +21,7 @@ const quickLinks = [
 const categories = [
   { title: "adopt a pet", path: "/pet" },
   { title: "donate", path: "/donate" },
+  { title: "admin", path: "/admin" },
 ];
 
 export function Footer() {

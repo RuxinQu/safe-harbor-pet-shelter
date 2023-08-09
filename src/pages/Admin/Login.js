@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { adminLogin } from "../../util/api";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -16,6 +17,12 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await adminLogin(formState);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      Cookies.set("AuthToken", jsonResponse.token, {
+        expires: new Date(Date.now() + 1 * 60 * 60 * 1000),
+      });
+    }
     switch (response.status) {
       case 429:
         setResponse("Too many requests, please try again later");
@@ -30,6 +37,7 @@ export default function Login() {
         setResponse("Something went wrong");
     }
   };
+
   return (
     <div style={{ width: "80%", margin: "1rem auto" }}>
       <div style={{ textAlign: "center" }}>

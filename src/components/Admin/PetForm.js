@@ -12,6 +12,7 @@ export const PetForm = ({
   title,
   handleSubmit,
   handleEdit,
+  authToken,
 }) => {
   return (
     <form
@@ -193,7 +194,8 @@ export const PetForm = ({
                       await deleteImg(
                         url.pathname.slice(1),
                         formState._id,
-                        i._id
+                        i._id,
+                        authToken
                       );
                     }}
                   />
@@ -211,7 +213,7 @@ export const PetForm = ({
         {title === "edit" && (
           <ButtonDialog
             handleDeletePet={async () => {
-              await deletePet(formState._id);
+              await deletePet(formState._id, authToken);
             }}
             button={"deletePet"}
           />

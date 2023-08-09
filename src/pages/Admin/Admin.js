@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { WithAuth, adminLogout, getPets, getPetsByName } from "../../util/api";
+import Cookies from "js-cookie";
+import { WithAuth, getPets, getPetsByName } from "../../util/api";
 import { PetFormContainer } from "../../components/Admin/PerFormContainer";
 import { petUploadHelper } from "../../util/formHelper";
 
@@ -8,10 +9,11 @@ export default function Admin() {
   const navigate = useNavigate();
   const [pets, setPets] = useState([]);
   const [value, setValue] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const authToken = Cookies.get("AuthToken");
   useEffect(() => {
     const Auth = async () => {
-      const result = await WithAuth();
+      const result = await WithAuth(authToken);
       if (result.ok) {
         setIsLoggedIn(true);
       } else {
@@ -51,7 +53,13 @@ export default function Admin() {
           alignItems: "center",
         }}
       >
-        <button onClick={adminLogout} style={{ margin: "1rem" }}>
+        <button
+          onClick={() => {
+            Cookies.remove("AuthToken");
+            window.location.assign("/admin/login");
+          }}
+          style={{ margin: "1rem" }}
+        >
           Logout
         </button>
         {/* add pet section*/}

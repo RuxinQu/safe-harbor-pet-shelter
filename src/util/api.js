@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://safe-harbor-pet-shelter.herokuapp.com";
 const options = {
   method: "GET",
   headers: {
@@ -76,22 +76,15 @@ export const adminLogin = async (data) => {
   }
 };
 
-export const adminLogout = async () => {
-  try {
-    const response = await fetch(`${baseUrl}/admin/logout`, options);
-    window.location.reload();
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const uploadImgs = async (data) => {
+export const uploadImgs = async (data, token) => {
   try {
     const response = await fetch(`${baseUrl}/admin/upload-imgs`, {
       mode: "cors",
       method: "POST",
       body: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     const jsonResponse = await response.json();
     return jsonResponse;
@@ -100,7 +93,7 @@ export const uploadImgs = async (data) => {
   }
 };
 
-export const deleteImg = async (key, petId, imgId) => {
+export const deleteImg = async (key, petId, imgId, token) => {
   try {
     const response = await fetch(
       `${baseUrl}/admin/delete-img/${key}/pet/${petId}/img/${imgId}`,
@@ -108,6 +101,7 @@ export const deleteImg = async (key, petId, imgId) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -117,13 +111,14 @@ export const deleteImg = async (key, petId, imgId) => {
   }
 };
 
-export const addPets = async (data) => {
+export const addPets = async (data, token) => {
   try {
     const response = await fetch(`${baseUrl}/admin/add-pets`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     return response;
@@ -132,7 +127,7 @@ export const addPets = async (data) => {
   }
 };
 
-export const deletePet = async (id) => {
+export const deletePet = async (id, token) => {
   try {
     const pet = await getPetById(id);
     const imagesArr = pet.images;
@@ -144,6 +139,7 @@ export const deletePet = async (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     window.location.reload();
@@ -153,12 +149,13 @@ export const deletePet = async (id) => {
   }
 };
 
-export const editPet = async (id, data) => {
+export const editPet = async (id, data, token) => {
   try {
     const response = await fetch(`${baseUrl}/admin/edit-pet/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -168,9 +165,15 @@ export const editPet = async (id, data) => {
   }
 };
 
-export const WithAuth = async () => {
+export const WithAuth = async (token) => {
   try {
-    const response = await fetch(`${baseUrl}/admin/auth`, options);
+    const response = await fetch(`${baseUrl}/admin/auth`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response;
   } catch (err) {
     console.log(err);

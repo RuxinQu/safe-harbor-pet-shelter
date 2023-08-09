@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { addPets, editPet, uploadImgs } from "../../util/api";
 import { PetForm } from "./PetForm";
+import Cookies from "js-cookie";
 
 export const PetFormContainer = ({ initFormState, title }) => {
+  const authToken = Cookies.get("AuthToken");
   const [formState, setFormState] = useState(initFormState);
   // for the multer upload form, this property will be appended to formstate
   const [formImage, setFormImage] = useState([]);
@@ -30,9 +32,9 @@ export const PetFormContainer = ({ initFormState, title }) => {
       data.append("images", image);
     });
     try {
-      const uploadImgResponse = await uploadImgs(data);
+      const uploadImgResponse = await uploadImgs(data, authToken);
       formState.images = uploadImgResponse.images;
-      const addPetsResponse = await addPets(formState);
+      const addPetsResponse = await addPets(formState, authToken);
       if (addPetsResponse.ok) {
         setAlertText("new pet added");
         setDisableButton(false);
@@ -56,11 +58,11 @@ export const PetFormContainer = ({ initFormState, title }) => {
     });
     try {
       if (formImage.length) {
-        const uploadImgResponse = await uploadImgs(data);
+        const uploadImgResponse = await uploadImgs(data, authToken);
         const imageUrl = uploadImgResponse.images;
         formState.images.push(...imageUrl);
       }
-      const response = await editPet(formState._id, formState);
+      const response = await editPet(formState._id, formState, authToken);
       if (response.ok) {
         setAlertText("pet updated");
         setDisableButton(false);
@@ -87,6 +89,7 @@ export const PetFormContainer = ({ initFormState, title }) => {
       title={title}
       handleSubmit={handleSubmit}
       handleEdit={handleEdit}
+      authToken={authToken}
     />
   );
 };
