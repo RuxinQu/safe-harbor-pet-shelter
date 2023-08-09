@@ -1,3 +1,4 @@
+const baseUrl = "http://localhost:3001";
 const options = {
   method: "GET",
   headers: {
@@ -6,7 +7,7 @@ const options = {
 };
 
 export const getPets = async (type) => {
-  const result = await fetch("/api/pets", options);
+  const result = await fetch(`${baseUrl}/api/pets`, options);
   const jsonResult = await result.json();
   if (type === "all") {
     return jsonResult;
@@ -16,7 +17,7 @@ export const getPets = async (type) => {
 };
 
 export const getPetsByName = async (name) => {
-  const result = await fetch("/api/pets", options);
+  const result = await fetch(`${baseUrl}/api/pets`, options);
   const jsonResult = await result.json();
   return jsonResult.filter((p) => {
     const petsName = p.name.toLowerCase();
@@ -25,14 +26,14 @@ export const getPetsByName = async (name) => {
 };
 
 export const getPetById = async (id) => {
-  const result = await fetch("/api/pets", options);
+  const result = await fetch(`${baseUrl}/api/pets`, options);
   const jsonResult = await result.json();
   return jsonResult.find((p) => p._id === id);
 };
 
 export const sendAdoptForm = async (data) => {
   try {
-    const response = await fetch("/api/pets/adopt", {
+    const response = await fetch(`${baseUrl}/api/pets/adopt`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -47,7 +48,7 @@ export const sendAdoptForm = async (data) => {
 
 export const sendContactForm = async (data) => {
   try {
-    const response = await fetch("/api/pets/contact", {
+    const response = await fetch(`${baseUrl}/api/pets/contact`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -62,7 +63,7 @@ export const sendContactForm = async (data) => {
 
 export const adminLogin = async (data) => {
   try {
-    const response = await fetch("/admin/login", {
+    const response = await fetch(`${baseUrl}/admin/login`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -77,7 +78,7 @@ export const adminLogin = async (data) => {
 
 export const adminLogout = async () => {
   try {
-    const response = await fetch("/admin/logout", options);
+    const response = await fetch(`${baseUrl}/admin/logout`, options);
     window.location.reload();
     return response;
   } catch (err) {
@@ -87,7 +88,7 @@ export const adminLogout = async () => {
 
 export const uploadImgs = async (data) => {
   try {
-    const response = await fetch("/admin/upload-imgs", {
+    const response = await fetch(`${baseUrl}/admin/upload-imgs`, {
       mode: "cors",
       method: "POST",
       body: data,
@@ -102,7 +103,7 @@ export const uploadImgs = async (data) => {
 export const deleteImg = async (key, petId, imgId) => {
   try {
     const response = await fetch(
-      `/admin/delete-img/${key}/pet/${petId}/img/${imgId}`,
+      `${baseUrl}/admin/delete-img/${key}/pet/${petId}/img/${imgId}`,
       {
         method: "DELETE",
         headers: {
@@ -118,7 +119,7 @@ export const deleteImg = async (key, petId, imgId) => {
 
 export const addPets = async (data) => {
   try {
-    const response = await fetch("/admin/add-pets", {
+    const response = await fetch(`${baseUrl}/admin/add-pets`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -139,7 +140,7 @@ export const deletePet = async (id) => {
       const url = new URL(i.url);
       await deleteImg(url.pathname.slice(1), id, i._id);
     });
-    const response = await fetch(`/admin/delete-pet/${id}`, {
+    const response = await fetch(`${baseUrl}/admin/delete-pet/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -154,7 +155,7 @@ export const deletePet = async (id) => {
 
 export const editPet = async (id, data) => {
   try {
-    const response = await fetch(`/admin/edit-pet/${id}`, {
+    const response = await fetch(`${baseUrl}/admin/edit-pet/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -169,7 +170,7 @@ export const editPet = async (id, data) => {
 
 export const WithAuth = async () => {
   try {
-    const response = await fetch("/admin/auth", options);
+    const response = await fetch(`${baseUrl}/admin/auth`, options);
     return response;
   } catch (err) {
     console.log(err);
