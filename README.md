@@ -5,21 +5,23 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![MUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
 Email sending: [Nodemailer](https://nodemailer.com/about/)
 
 Image uploading: [Multer](https://www.npmjs.com/package/multer), Cloud Storage: [Amazon S3](https://aws.amazon.com/s3/)
 
-Authentication: [Bcrypt](https://www.npmjs.com/package/bcrypt), [Passport-Local](https://www.passportjs.org)
+Authentication: [Bcrypt](https://www.npmjs.com/package/bcrypt), [Passport-JWT](https://www.passportjs.org)
 
 ## Description
 
-A full-stack PWA project for Safe Harbor Pet Shelter. Users can view the available pets and send adoption form to the shelter. An admin page has been added to enable the administrator to manage the pets' data.
+A full-stack PWA project for Safe Harbor Pet Shelter. Users can view the available pets and send adoption form to the shelter. An admin page has been added to enable the administrator to manage the pets' data. This is the client side of the project. The backend is in [this](https://github.com/RuxinQu/safe-harbor-pet-shelter-backend) repo.
 
-To improve web performance, text compression has been enabled.
+The deployed website can be accessed at [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://safe-harbor-pet-shelter.netlify.app).
 
-The deployed website can be accessed at https://safe-harbor-pet-shelter.herokuapp.com.
+The server url is [![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)](https://safe-harbor-pet-shelter.herokuapp.com)
 
 ## Usage
 
@@ -27,7 +29,7 @@ The deployed website can be accessed at https://safe-harbor-pet-shelter.herokuap
 1. Users can filter cats or dogs, or search for a pet by name.
 1. If a user is interested in adopting a pet, they can complete and submit the adoption form.
 1. Users can click on 'Learn More' or 'About Us' to learn more about Safe Harbor Pet Shelter. They can donate to the shelter, or contact the shelter through the contact form on the 'Contact' page.
-1. An admin page can be accessed through https://safe-harbor-pet-shelter.herokuapp.com/admin. It is added for easier management of pet information. If a user attempts to enter incorrect credentials **5** times on the Admin login page, the account will be locked for **15** minutes.
+1. An admin page can be accessed through https://safe-harbor-pet-shelter.netlify.app/admin. It is added for easier management of pet information. If a user attempts to enter incorrect credentials **5** times on the Admin login page, the account will be locked for **15** minutes.
 1. Administrators can add new pets, edit pet data, and delete pets through the admin page. The page supports multiple image uploads.
 1. Click on the link to the deployed website and explore all features🎆! Hope that all of the furry babies will find their forever homes❤️.
 
@@ -35,19 +37,19 @@ The deployed website can be accessed at https://safe-harbor-pet-shelter.herokuap
 
 - Home page.
 
-  ![homepage](./client/public/home.png)
+  ![homepage](./public/home.png)
 
 - Pet page. Users are able to filter the pet result
 
-  ![pet](./client/public/pet.png)
+  ![pet](./public/pet.png)
 
 - Pet Detail page, users can click the 'Adopt' button to access the adoption form and initiate the adoption process.
 
-  ![detail](./client/public/detail.png)
+  ![detail](./public/detail.png)
 
 - The admin page. Supports editing text information, adding or removing images, and changing the cover image, etc...
 
-  ![admin](./client/public/admin-page.png)
+  ![admin](./public/admin-page.png)
 
 ## Contact
 
